@@ -157,7 +157,6 @@ const moveOneToHamburger = (nav, hamburger) => {
         button.classList.remove("hide");
     }
     for (let i = nav.children.length - 1; i > -1; i--) {
-        console.log(i)
         const child = nav.children[i];
         if (!child.classList.contains("hide")) {
             child.classList.add("hide");
@@ -268,7 +267,6 @@ const handleMouseLeaveNav = (e) => {
 const handleMouseOverHamburger = (e) => {
     const hamburger = document.getElementById("hamburger");
     if (hasChildLinks(e.target)) {
-        console.log("hello!");
         const childLinksWrapper = getChildLinks(e.target);
         let element = e.target;
         if (element.tagName == "A") {
@@ -295,7 +293,6 @@ const handleMouseLeaveHamburger = (e) => {
 }
 
 const handleHamburgerExpand = (e) => {
-    console.log("click!")
     let listItem = e.target;
     if (e.target.tagName == "I") {
         listItem = e.target.parentElement;
