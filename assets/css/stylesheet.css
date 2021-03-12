@@ -1152,7 +1152,7 @@ aside img {
 
 #hamburger.mobile>li {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: 58px auto;
 	grid-template-rows: auto auto;
 	grid-template-areas: "icon link" "sublinks sublinks";
 	justify-self: stretch;
