@@ -33,7 +33,7 @@ const areChildrenWrapped = (nav) => {
 const handleResize = () => {
     let nav = document.getElementById("dynamic_nav");
     let hamburger = document.getElementById("hamburger");
-    if (window.innerWidth <= 768) {
+    if (document.documentElement.clientWidth <= 768) {
         moveAllToHamburger(nav, hamburger);
         formatForMobile(hamburger);
         return;
@@ -320,10 +320,13 @@ let hamburger = document.getElementById("hamburger");
 if (dynamic_nav) {
     window.onload = () => {
         handleResize()
-        document.getElementsByClassName("navigation")[0].classList.add("show");
+        setTimeout(() => {
+            document.getElementsByClassName("navigation")[0].classList.add("show");
+        }, 20)
     };
 
     window.addEventListener("resize", handleResize);
+    //document.getElementsByClassName("navigation")[0].classList.add("show");
 
     document.addEventListener('click', handleClick);
 
