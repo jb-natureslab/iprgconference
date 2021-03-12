@@ -1062,7 +1062,7 @@ aside img {
 }
 
 .navigation ul[data-depth="1"] {
-	background-color: var(--bright);
+	background-color: rgb(236, 236, 255);
 	position: absolute;
 	right: 0px;
 	width: 100%;
