@@ -33,11 +33,77 @@ const areChildrenWrapped = (nav) => {
 const handleResize = () => {
     let nav = document.getElementById("dynamic_nav");
     let hamburger = document.getElementById("hamburger");
-    moveAllToNav(nav, hamburger);
-    while (areChildrenWrapped(nav)) {
-        moveOneToHamburger(nav, hamburger);
+    if (window.innerWidth <= 768) {
+        moveAllToHamburger(nav, hamburger);
+        formatForMobile(hamburger);
+        return;
+    }
+    else {
+        moveAllToNav(nav, hamburger);
+        formatForDesktop(hamburger);
+        while (areChildrenWrapped(nav)) {
+            moveOneToHamburger(nav, hamburger);
+        }
     }
 
+}
+
+const formatForMobile = (hamburger) => {
+    hamburger.classList.add("mobile");
+    for (let i = 0; i < hamburger.children.length; i++) {
+        const link = hamburger.children[i];
+        const icons = findIcons(link);
+        if (icons.length > 0) {
+            icons.forEach(icon => {
+                if (icon.classList.contains("mobile") && icon.classList.contains("hide")) {
+                    icon.classList.remove("hide");
+                }
+                if (!icon.classList.contains("mobile")) {
+                    icon.classList.add("hide");
+                }
+            });
+        }
+
+
+    }
+}
+
+const formatForDesktop = (hamburger) => {
+    hamburger.classList.remove("mobile");
+    for (let i = 0; i < hamburger.children.length; i++) {
+        const link = hamburger.children[i];
+        const icons = findIcons(link);
+        if (icons.length > 0) {
+            icons.forEach(icon => {
+                if (icon.classList.contains("mobile")) {
+                    icon.classList.add("hide");
+                }
+                if (!icon.classList.contains("mobile") && icon.classList.contains("hide")) {
+                    icon.classList.remove("hide");
+                }
+            });
+        }
+    }
+}
+
+const findIcons = (node) => {
+    if (node.tagName == "I") {
+        return [node];
+    }
+
+    let icons = [];
+    for (let i = 0; i < node.children.length; i++) {
+        const child = node.children[i];
+        icons = [...icons, ...findIcons(child)];
+    }
+
+    return icons;
+}
+
+const moveAllToHamburger = (nav, hamburger) => {
+    for (let i = 0; i < nav.children.length; i++) {
+        moveOneToHamburger(nav, hamburger);
+    }
 }
 
 const moveAllToNav = (nav, hamburger) => {
@@ -64,7 +130,8 @@ const moveOneToHamburger = (nav, hamburger) => {
     if (button.classList.contains("hide")) {
         button.classList.remove("hide");
     }
-    for (let i = nav.children.length - 1; i >= 0; i--) {
+    for (let i = nav.children.length - 1; i > -1; i--) {
+        console.log(i)
         const child = nav.children[i];
         if (!child.classList.contains("hide")) {
             child.classList.add("hide");
@@ -148,13 +215,14 @@ const getChildLinks = (navItem) => {
     return null;
 }
 
-const handleMouseOver = (e) => {
+const handleMouseOverNav = (e) => {
     if (hasChildLinks(e.target)) {
         const childLinksWrapper = getChildLinks(e.target);
         let element = e.target;
         if (element.tagName == "A") {
             element = element.parentElement;
         }
+
         const linkBox = element.getBoundingClientRect();
         const height = linkBox.bottom - linkBox.top;
         childLinksWrapper.style.top = `${height}px`;
@@ -162,17 +230,92 @@ const handleMouseOver = (e) => {
     }
 }
 
-const handleMouseLeave = (e) => {
+const handleMouseLeaveNav = (e) => {
     for (let i = 0; i < e.target.children.length; i++) {
         const child = e.target.children[i];
         if (child.tagName == "UL") {
             child.classList.remove("show");
         }
+    }
+}
+
+const handleMouseOverHamburger = (e) => {
+    const hamburger = document.getElementById("hamburger");
+    if (hasChildLinks(e.target)) {
+        console.log("hello!");
+        const childLinksWrapper = getChildLinks(e.target);
+        let element = e.target;
+        if (element.tagName == "A") {
+            element = element.parentElement;
+        }
+        const linkBox = element.getBoundingClientRect();
+
+        if (!hamburger.classList.contains("mobile")) {
+            const width = linkBox.right - linkBox.left;
+            childLinksWrapper.style.right = `${width}px`;
+            childLinksWrapper.classList.add("show");
+        }
+    }
+}
+
+const handleMouseLeaveHamburger = (e) => {
+    for (let i = 0; i < e.target.children.length; i++) {
+        const child = e.target.children[i];
+        if (child.tagName == "UL") {
+            child.classList.remove("show");
+        }
+    }
+}
+
+const handleHamburgerExpand = (e) => {
+    console.log("click!")
+    let listItem = e.target;
+    if (e.target.tagName == "I") {
+        listItem = e.target.parentElement;
+    }
+    const icons = findIcons(listItem);
+    let mobileIcon;
+    for (let j = 0; j < icons.length; j++) {
+        const icon = icons[j];
+        if (icon.classList.contains("mobile")) {
+            mobileIcon = icon;
+        }
+    }
+
+    for (let i = 0; i < listItem.children.length; i++) {
+        const child = listItem.children[i];
+
+        if (child.tagName == "UL") {
+            if (child.style.maxHeight) {
+                mobileIcon.classList.remove("spin");
+                child.style.maxHeight = null;
+            } else {
+                mobileIcon.classList.add("spin");
+                child.style.maxHeight = child.scrollHeight + "px";
+            }
+        }
+
+        
+        
+    }
+}
+
+const attachIconListeners = () => {
+    let hamburger = document.getElementById("hamburger");
+    for (let i = 0; i < hamburger.children.length; i++) {
+        const link = hamburger.children[i];
+        let icons = findIcons(link);
+        icons.forEach(icon => {
+            if (icon.classList.contains("mobile")) {
+                icon.addEventListener("click", handleHamburgerExpand)
+            }
+        })
         
     }
 }
 
 let dynamic_nav = document.getElementById("dynamic_nav");
+let hamburger = document.getElementById("hamburger");
 if (dynamic_nav) {
     window.onload = () => {
         handleResize()
@@ -182,13 +325,21 @@ if (dynamic_nav) {
     window.addEventListener("resize", handleResize);
 
     document.addEventListener('click', handleClick);
-    
+
 
     for (let i = 0; i < dynamic_nav.children.length; i++) {
         const child = dynamic_nav.children[i];
-        child.addEventListener("mouseover", handleMouseOver);
-        child.addEventListener("mouseleave", handleMouseLeave);
+        child.addEventListener("mouseover", handleMouseOverNav);
+        child.addEventListener("mouseleave", handleMouseLeaveNav);
     }
+
+    for (let i = 0; i < hamburger.children.length; i++) {
+        const child = hamburger.children[i];
+        child.addEventListener("mouseover", handleMouseOverHamburger);
+        child.addEventListener("mouseleave", handleMouseLeaveHamburger);
+    }
+
+    attachIconListeners();
 
     let hamburgerButton = document.getElementById("hamburgerButton");
     document.getElementById("hamburgerButton").addEventListener('click', (e) => {
