@@ -171,7 +171,7 @@ class perchNavigation
 			if (!$this->hasChildren($pageArray, $page) && ($this->getDepth($pageArray, $page) == $depth)) {
 				$element = "<li>
 								<a href={$page['pagePath']}>
-									{$page['pageTitle']}
+									{$page['pageNavText']}
 								</a>
 							  </li>";
 				$nav .= $element;
@@ -187,7 +187,7 @@ class perchNavigation
 							{$icon2}
 							<a href={$page['pagePath']}>
 								<i class='{$submenuIcon}'></i>
-								{$page['pageTitle']}
+								{$page['pageNavText']}
 							</a>";
 				$children = $this->getChildren($pageArray, $page);
 				$newDepth = $depth + 1;
