@@ -1086,7 +1086,7 @@ aside img {
 }
 
 .navigation ul[data-depth="1"] {
-	background-color: var(--primary);
+	background-color: var(--p);
 	position: absolute;
 	right: 0px;
 	min-width: 100%;
