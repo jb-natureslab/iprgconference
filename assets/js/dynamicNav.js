@@ -263,6 +263,7 @@ const handleMouseLeaveHamburger = (e) => {
         const child = e.target.children[i];
         if (child.tagName == "UL") {
             child.classList.remove("show");
+            child.style.right = "0px";
         }
     }
 }
