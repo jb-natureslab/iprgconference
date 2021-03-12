@@ -206,8 +206,6 @@ class perchNavigation
 	
 }
 
-echo 'is this working?';
-
 ?>
 
 
