@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/conferenceiprg/public_html/
+    - export DEPLOYPATH=/home/conference.iprg.info/
     - /bin/cp -R * $DEPLOYPATH
