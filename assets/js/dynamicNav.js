@@ -8,6 +8,28 @@ Apply appropriate classes.
 
 let interval = null;
 
+// const isChildWrapped = (currentChild) => {
+//     if (!currentChild.previousSibling || currentChild.classList.contains("hide")) {
+//         return false;
+//     }
+//     let currentChildRect = currentChild.getBoundingClientRect();
+//     let prevChildRect = currentChild.previousSibling.getBoundingClientRect();
+//     if (currentChildRect.left < prevChildRect.right) {
+//         return true;
+//     }
+//     return false
+// }
+
+// const areChildrenWrapped = (nav) => {
+//     for (let i = 0; i < nav.children.length; i++) {
+//         const element = nav.children[i];
+//         if (isChildWrapped(element)) {
+//             return true
+//         }
+//     }
+//     return false;
+// }
+
 const isChildWrapped = (currentChild) => {
     if (!currentChild.previousSibling || currentChild.classList.contains("hide")) {
         return false;
@@ -21,11 +43,15 @@ const isChildWrapped = (currentChild) => {
 }
 
 const areChildrenWrapped = (nav) => {
+    let total = 0;
+    let navigationRect = document.getElementsByClassName("navigation")[0].getBoundingClientRect();
+    let navWidth = navigationRect.right - navigationRect.left;
     for (let i = 0; i < nav.children.length; i++) {
-        const element = nav.children[i];
-        if (isChildWrapped(element)) {
-            return true
-        }
+        const childRect = nav.children[i].getBoundingClientRect();
+        total += childRect.right - childRect.left;
+    }
+    if (total > navWidth - 50) {
+        return true;
     }
     return false;
 }
