@@ -274,8 +274,6 @@ header .logo a {
 	color: var(--primary);
 }
 
-header nav {}
-
 header .restrict nav ul {
 	margin: 0;
 	margin-left: 0px;
@@ -962,7 +960,7 @@ aside img {
 
 /* Nav */
 
-#dynamic_nav {
+.topNav {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: end;
@@ -977,7 +975,7 @@ aside img {
 	margin: 0;
 }
 
-#hamburger {
+.hamburger {
 	position: absolute;
 	background-color: var(--primary);
 	color: white;
@@ -986,27 +984,27 @@ aside img {
 	text-align: right;
 	right: 0px;
 	top: 35px;
-	opacity: 0;
-	pointer-events: none;
+	opacity: 1;
+	pointer-events: auto;
 	transition: 150ms;
 }
 
-#hamburger.show {
-	opacity: 1;
-	pointer-events: auto;
+.hamburger.hide {
+	opacity: 0;
+	pointer-events: none;
 }
 
-#hamburger li {
+.hamburger li {
 	line-height: 14px;
 	margin-right: 0;
 	width: 280px;
 }
 
-#hamburger a {
+.hamburger a {
 	color: white;
 }
 
-#hamburgerButton {
+.hamburgerButton {
 	position: relative;
 	top: 1px;
 	cursor: pointer;
@@ -1019,7 +1017,7 @@ aside img {
 	display: block;
 }
 
-#hamburgerButton.hide {
+.hamburgerButton.hide {
 	display: none;
 }
 
@@ -1039,7 +1037,7 @@ aside img {
 	opacity: 1;
 }
 
-.navigation li {
+.navigation > ul > li, .navigation > ul > li ul li {
 	line-height: 14px;
 	font-size: 1.2rem;
 	position: relative;
@@ -1064,7 +1062,7 @@ aside img {
 	margin: -10px 0;
 }
 
-.navigation li:hover>a {
+.navigation li:hover > a {
 	color: white;
 	background-color: var(--primary);
 	transition: 150ms background-color;
@@ -1084,112 +1082,116 @@ aside img {
 	display: none;
 }
 
-.navigation ul[data-depth="1"] {
+.navigation ul.navChildItems {
 	background-color: var(--p);
 	position: absolute;
 	right: 0px;
 	min-width: 100%;
-	opacity: 0;
-	pointer-events: none;
+	opacity: 1;
+	pointer-events: all;
 	text-align: right;
 	transition: 150ms background-color;
 	z-index: -10;
 }
 
-.navigation ul[data-depth="1"] li {
+.navigation ul.navChildItems li {
 	background-color: var(--primary);
 	margin: 0;
 }
 
-.navigation ul[data-depth="1"] li a:hover {
+.navigation ul.navChildItems li a:hover {
 	background-color: var(--secondary);
 	transition: 150ms background-color;
 }
 
-.navigation ul[data-depth="1"] li>a {
+.navigation ul.navChildItems li>a {
 	background-color: var(--primary);
 	color: white;
 	white-space: nowrap;
 }
 
-.navigation ul[data-depth="1"].show {
+.navigation ul.navChildItems.hide {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.hamburger li {
+	flex-direction: row-reverse;
+	position: relative;
+}
+
+.hamburger ul.hamburgerChildItems {
 	opacity: 1;
 	pointer-events: all;
+	position: absolute;
+	top: 0px;
+	background-color: var(--primary);
 }
 
-#hamburger ul[data-depth="1"].show {
-	opacity: 1;
-	pointer-events: all;
+.hamburger ul.hamburgerChildItems.hide {
+	opacity: 0;
+	pointer-events: none;
 }
 
-#hamburger li {
-	line-height: 14px;
-}
-
-#hamburger li:hover {
+.hamburger i:hover {
 	background-color: var(--secondary);
 	transition: 150ms background-color;
 }
 
-#hamburger li a {
+.hamburger li a {
 	flex-direction: row;
 	justify-content: flex-end;
 }
 
-#hamburger i {
+.hamburger i {
 	display: block;
 }
 
-#hamburger i.hide {
+.hamburger i.hide {
 	display: none;
 }
 
-#hamburger li a i {
+.hamburger li a i {
 	position: relative;
 	top: 1px;
 	justify-self: flex-end;
 }
 
-#hamburger.mobile>li {
+.hamburger.mobile>li[data-children="true"] {
 	display: grid;
-	grid-template-columns: 58px auto;
+	grid-template-columns: auto auto;
 	grid-template-rows: auto auto;
 	grid-template-areas: "icon link" "sublinks sublinks";
 	justify-self: stretch;
+	justify-items: stretch;
 }
 
-#hamburger.mobile>li:hover>i {
-	background-color: inherit;
-	color: inherit;
-}
-
-#hamburger.mobile li a {
+.hamburger.mobile > li > a {
 	grid-area: link;
-	pointer-events: all;
 }
 
-#hamburger.mobile li>i {
+.hamburger.mobile li>i {
 	grid-area: icon;
 	justify-self: center;
 	align-self: center;
 	height: 100%;
-	width: 100%;
 	display: flex;
 	padding: 0 20px;
 	cursor: pointer;
+	width: 58px;
 }
 
-#hamburger.mobile li>i.spin::before {
+.hamburger.mobile li>i.spin::before {
 	transform: rotate(180deg);
 }
 
-#hamburger.mobile li>i::before {
+.hamburger.mobile li>i::before {
 	margin: auto;
 	transform: rotate(0deg);
 	transition: transform 150ms;
 }
 
-#hamburger.mobile ul[data-depth="1"] {
+.hamburger.mobile .hamburgerChildItems {
 	position: relative;
 	opacity: 1;
 	color: white;
@@ -1200,19 +1202,8 @@ aside img {
 	grid-area: sublinks;
 }
 
-#hamburger.mobile ul[data-depth="1"] li>a {
-	color: black;
-	background-color: var(--grey);
-}
-
-#hamburger.mobile ul[data-depth="1"] li {
-	background-color: var(--primary);
-	margin: 0;
-}
-
-#hamburger.mobile ul[data-depth="1"] li:hover>a {
-	background-color: var(--secondary);
-	color: white;
+.hamburgerButton:hover {
+	background-color: white;
 }
 
 @media screen and (max-width: 768px) {
@@ -1220,6 +1211,26 @@ aside img {
 		height: 70px;
 		margin-top: auto;
 		margin-bottom: auto;
+	}
+
+	.hamburger ul.hamburgerChildItems.hide {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	.hamburger.hide ul.hamburgerChildItems.hide {
+		pointer-events: none;
+	}
+
+
+	.hamburger ul.hamburgerChildItems a{
+		color: var(--primary);
+		background-color: var(--grey);
+	}
+
+	.hamburger ul.hamburgerChildItems a:hover {
+		color: white;
+		background-color: var(--secondary);
 	}
 }
 
