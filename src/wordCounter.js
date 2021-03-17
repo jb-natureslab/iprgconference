@@ -12,13 +12,13 @@ const getMaxWordCount = (element) => {
 }
 
 const convertStringToArray = (str) => {
-    splitStr = str.split(" ");
-    return splitStrSpacesRemoved = splitStr.filter(d => d != "");
+    let splitStr = str.split(" ");
+    return splitStr.filter(d => d != "");
 }
 
 const isStringWithinWordCount = (str, maxCount) => {
-    splitStr = convertStringToArray(str);
-    count = splitStr.length;
+    let splitStr = convertStringToArray(str);
+    let count = splitStr.length;
     if (count >= maxCount) {
         return false;
     }
@@ -26,7 +26,7 @@ const isStringWithinWordCount = (str, maxCount) => {
 }
 
 const getCountElement = (element) => {
-    children = element.nextSibling.children;
+    let children = element.nextSibling.children;
     let countElement;
     for (let index = 0; index < children.length; index++) {
         if (children[index].classList.contains("count")) {
@@ -37,7 +37,7 @@ const getCountElement = (element) => {
 }
 
 const trimStringToMaxCount = (str, maxCount) => {
-    splitStr = convertStringToArray(str);
+    let splitStr = convertStringToArray(str);
     return splitStr.filter((d, i) => i < maxCount).join(" ");
 }
 
