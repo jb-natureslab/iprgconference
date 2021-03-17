@@ -1235,14 +1235,14 @@ form {
 	width: auto;
 	font-size: 1rem; */
 	font-weight: normal;
-	font-size: 1..05rem;
+	font-size: 1.05rem;
 }
 
 .form-input :is(input, textarea) {
 	max-width: none;
 	border: 1px solid black;
 	background-color: rgb(250, 250, 250);
-	padding: 10px 15px;
+	padding: 0.5rem 0.8rem;
 	margin: 0;
 	font-size: 1.05rem;
 }
@@ -1260,6 +1260,7 @@ form {
 	min-width: 180px;
 	padding: 1rem;
 	border: none;
+	font-size: 1.05rem;
 }
 
 .form-input > :is(input, textarea) {
