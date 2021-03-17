@@ -960,6 +960,26 @@ aside img {
 
 /* Nav */
 
+.navigation {
+	display: flex;
+	height: 140px;
+	grid-row: auto;
+	grid-column: auto;
+	justify-content: flex-end;
+	align-items: center;
+	opacity: 0;
+	gap: 20px;
+	z-index: 10;
+}
+
+.navigation.show {
+	opacity: 1;
+}
+
+.navigation li.hide {
+	display: none;
+}
+
 .topNav {
 	display: flex;
 	flex-wrap: wrap;
@@ -967,12 +987,66 @@ aside img {
 	align-items: center;
 }
 
-.hamburgerWrapper {
+.navItem, .hamburgerItem, .navChildItem, .hamburgerChildItem {
+	line-height: 14px;
+	font-size: 1.2rem;
 	position: relative;
+	margin: 0;
+	display: flex;
 }
 
-.hamburgerWrapper button {
-	margin: 0;
+.navItem {
+	justify-content: flex-end;
+}
+
+.navChildItems, .hamburgerChildItems {
+	position: absolute;
+	opacity: 1;
+	pointer-events: all;
+}
+
+.navChildItems.hide, .hamburgerChildItems.hide {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.navChildItems {
+	display: flex;
+	flex-direction: column;
+}
+
+.navChildItem, .hamburgerChildItem {
+	background-color: var(--primary);
+}
+
+.navChildLink, .hamburgerLink, .hamburgerChildLink {
+	color:white;
+	width: 100%;
+	text-align: right;
+}
+
+.navLink, .hamburgerLink, .navChildLink, .hamburgerChildLink {
+	padding: 0.7rem 1rem;
+	font-size: 1.2rem;
+	line-height: normal;
+	text-decoration: none;
+	white-space: nowrap;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 10px;
+}
+
+.navLink {
+	flex-direction: row-reverse;
+}
+
+.navLink i {
+	margin: -10px 0;
+}
+
+.hamburgerWrapper {
+	position: relative;
 }
 
 .hamburger {
@@ -994,16 +1068,6 @@ aside img {
 	pointer-events: none;
 }
 
-.hamburger li {
-	line-height: 14px;
-	margin-right: 0;
-	width: 280px;
-}
-
-.hamburger a {
-	color: white;
-}
-
 .hamburgerButton {
 	position: relative;
 	top: 1px;
@@ -1017,144 +1081,23 @@ aside img {
 	display: block;
 }
 
-.hamburgerButton.hide {
-	display: none;
+.hamburgerButton:hover {
+	/* To override earlier style */
+	background-color: white;
+	color: black;
 }
 
-.navigation {
-	display: flex;
-	grid-row: auto;
-	grid-column: auto;
-	height: 140px;
-	justify-content: flex-end;
-	align-items: center;
-	opacity: 0;
-	gap: 20px;
-	z-index: 10;
+.hamburgerItem {
+	margin-right: 0;
+	width: 280px;
 }
 
-.navigation.show {
-	opacity: 1;
-}
-
-.navigation > ul > li, .navigation > ul > li ul li {
-	line-height: 14px;
-	font-size: 1.2rem;
-	position: relative;
-	margin: 0;
-	display: flex;
-	justify-content: flex-end;
-	/* padding: 1rem; */
-}
-
-.navigation li a {
-	padding: 1rem;
-	width: 100%;
-	display: flex;
-	gap: 10px;
-	align-items: center;
-	justify-content: flex-start;
-	flex-direction: row-reverse;
-	white-space: nowrap;
-}
-
-.navigation li a i {
-	margin: -10px 0;
-}
-
-.navigation li:hover > a {
-	color: white;
-	background-color: var(--primary);
-	transition: 150ms background-color;
-}
-
-.navigation li a:hover {
-	background-color: var(--secondary);
-	color: white;
-	transition: 150ms background-color;
-}
-
-.navigation li>a {
-	text-decoration: none;
-}
-
-.navigation li.hide {
-	display: none;
-}
-
-.navigation ul.navChildItems {
-	background-color: var(--p);
-	position: absolute;
-	right: 0px;
-	min-width: 100%;
-	opacity: 1;
-	pointer-events: all;
-	text-align: right;
-	transition: 150ms background-color;
-	z-index: -10;
-}
-
-.navigation ul.navChildItems li {
-	background-color: var(--primary);
-	margin: 0;
-}
-
-.navigation ul.navChildItems li a:hover {
-	background-color: var(--secondary);
-	transition: 150ms background-color;
-}
-
-.navigation ul.navChildItems li>a {
-	background-color: var(--primary);
-	color: white;
-	white-space: nowrap;
-}
-
-.navigation ul.navChildItems.hide {
-	opacity: 0;
-	pointer-events: none;
-}
-
-.hamburger li {
-	flex-direction: row-reverse;
-	position: relative;
-}
-
-.hamburger ul.hamburgerChildItems {
-	opacity: 1;
-	pointer-events: all;
-	position: absolute;
-	top: 0px;
-	background-color: var(--primary);
-}
-
-.hamburger ul.hamburgerChildItems.hide {
-	opacity: 0;
-	pointer-events: none;
-}
-
-.hamburger i:hover {
-	background-color: var(--secondary);
-	transition: 150ms background-color;
-}
-
-.hamburger li a {
-	flex-direction: row;
-	justify-content: flex-end;
-}
-
-.hamburger i {
+.linkIcon {
 	display: block;
 }
 
-.hamburger i.hide {
+.linkIcon.hide {
 	display: none;
-}
-
-.hamburger li a i {
-	position: relative;
-	top: 1px;
-	justify-self: flex-end;
 }
 
 .hamburger.mobile>li[data-children="true"] {
@@ -1163,16 +1106,15 @@ aside img {
 	grid-template-rows: auto auto;
 	grid-template-areas: "icon link" "sublinks sublinks";
 	justify-self: stretch;
-	justify-items: stretch;
 }
 
-.hamburger.mobile > li > a {
+.hamburger.mobile .hamburgerChildLink {
 	grid-area: link;
 }
 
-.hamburger.mobile li>i {
+.hamburger.mobile li > .linkIcon {
 	grid-area: icon;
-	justify-self: center;
+	justify-self: start;
 	align-self: center;
 	height: 100%;
 	display: flex;
@@ -1181,11 +1123,15 @@ aside img {
 	width: 58px;
 }
 
-.hamburger.mobile li>i.spin::before {
+.hamburger.mobile li > .linkIcon:hover {
+	background-color: var(--secondary);
+}
+
+.hamburger.mobile li > .linkIcon.spin::before {
 	transform: rotate(180deg);
 }
 
-.hamburger.mobile li>i::before {
+.hamburger.mobile li > .linkIcon::before {
 	margin: auto;
 	transform: rotate(0deg);
 	transition: transform 150ms;
@@ -1202,8 +1148,34 @@ aside img {
 	grid-area: sublinks;
 }
 
-.hamburgerButton:hover {
-	background-color: white;
+.hamburger.mobile .hamburgerChildItems.hide {
+	pointer-events: all;
+}
+
+.hamburger.mobile .hamburgerChildLink {
+	background-color: var(--grey);
+	color: var(--primary);
+}
+
+
+/* Hover Control */
+
+.navigation li:hover {
+	background-color: var(--primary);
+}
+
+.navigation li:hover > a {
+	color: white;
+}
+
+.navigation a:hover {
+	background-color: var(--secondary);
+	color: white;
+}
+
+.hamburger.mobile .hamburgerChildLink:hover {
+	background-color: var(--secondary);
+	color: white;
 }
 
 @media screen and (max-width: 768px) {
@@ -1211,26 +1183,6 @@ aside img {
 		height: 70px;
 		margin-top: auto;
 		margin-bottom: auto;
-	}
-
-	.hamburger ul.hamburgerChildItems.hide {
-		opacity: 1;
-		pointer-events: all;
-	}
-
-	.hamburger.hide ul.hamburgerChildItems.hide {
-		pointer-events: none;
-	}
-
-
-	.hamburger ul.hamburgerChildItems a{
-		color: var(--primary);
-		background-color: var(--grey);
-	}
-
-	.hamburger ul.hamburgerChildItems a:hover {
-		color: white;
-		background-color: var(--secondary);
 	}
 }
 
