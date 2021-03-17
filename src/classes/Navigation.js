@@ -116,7 +116,6 @@ export default class Navigation {
     }
 
     handleMouseLeaveHamburger(link, hamburger) {
-        console.log(this.hamburger.isMobile);
         if (link.hasChildren) {
             link.childLinksNode.style.right = "0px";
             link.childLinksNode.classList.add("hide");

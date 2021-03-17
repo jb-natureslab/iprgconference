@@ -56,7 +56,6 @@ export const implementPreviewImage = () => {
     let addButton = document.getElementById("image-button");
     if (addButton) {
         addButton.addEventListener('click', (e) => {
-            console.log("click!");
             e.preventDefault();
             document.getElementsByClassName("image-upload")[0].click();
         })

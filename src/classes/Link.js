@@ -94,16 +94,12 @@ export class HamburgerNavLink extends Link {
                     if (subChild.classList.contains("linkIcon")) {
                         this.hasChildren = true;
                         this.desktopIcon = new Icon(subChild);
-                        console.log("desktop:")
-                        console.log(this.desktopIcon.node)
                     }
                 }
             } else if (child.classList.contains("hamburgerChildItems")) {
                 this.childLinksNode = child;
             } else if (child.classList.contains("linkIcon")) {
                 this.mobileIcon = new Icon(child);
-                console.log("mobile:")
-                console.log(this.mobileIcon.node)
                 this.mobileIcon.hide()
             }
         }

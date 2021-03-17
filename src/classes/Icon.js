@@ -14,7 +14,6 @@ export default class Icon {
     }
 
     hide() {
-        console.log("hide!")
         if (!this.node.classList.contains("hide")) {
             this.node.classList.add("hide");
         }
