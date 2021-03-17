@@ -40,6 +40,10 @@ table {
 	border-spacing: 0;
 }
 
+ol > li {
+	padding-left: 4px;
+}
+
 /* GLOBAL COLOURS */
 
 :root {
@@ -1003,6 +1007,7 @@ aside img {
 	position: absolute;
 	opacity: 1;
 	pointer-events: all;
+	min-width: 100%;
 }
 
 .navChildItems.hide, .hamburgerChildItems.hide {
@@ -1094,6 +1099,7 @@ aside img {
 
 .linkIcon {
 	display: block;
+	min-width: 15px;
 }
 
 .linkIcon.hide {
@@ -1236,6 +1242,7 @@ form {
 	font-size: 1rem; */
 	font-weight: normal;
 	font-size: 1.05rem;
+	margin-bottom: 0.3rem;
 }
 
 .form-input :is(input, textarea) {
