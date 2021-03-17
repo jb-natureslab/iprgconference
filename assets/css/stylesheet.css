@@ -107,7 +107,7 @@ h4, h5, h6 {
 	font-size: 1.2rem;
 }
 
-p, ul, ol {
+p, ul, ol, form, input, textarea, .form-button {
 	margin-bottom: 2rem;
 	font-size: 1.2rem;
 	color: var(--primary);
@@ -1192,25 +1192,77 @@ aside img {
 	}
 }
 
-/* End Nav */
+/* Form */
 
 form {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	margin: 0 auto;
+	margin: 10px auto;
 	max-width: 608px;
 }
 
-.form-section input {
+.form-section-label {
+	font-size: 1.4rem;
+	color: black;
+	margin-top: 0;
+	margin-bottom: 5px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgb(202, 202, 202);
+}
+
+.form-section {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	margin-bottom: 30px;
+}
+
+.form-input {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+
+.form-input label {
+	/* position: relative;
+	background-color: white;
+	padding: 0 5px;
+	top: 18px;
+	left: 15px;
+	width: auto;
+	font-size: 1rem; */
+	font-weight: normal;
+	font-size: 1..05rem;
+}
+
+.form-input :is(input, textarea) {
 	max-width: none;
+	border: 1px solid black;
+	background-color: rgb(250, 250, 250);
+	padding: 10px 15px;
+	margin: 0;
+	font-size: 1.05rem;
 }
 
-.form-section .form-button {
-	margin-top: 15px;
+.form-input :is(input, textarea)::placeholder {
+	color:#999999;
 }
 
-.form-section> :is(input, textarea) {
+.form-input textarea {
+	resize: vertical;
+}
+
+.form-input .form-button {
+	background-color: var(--primary);
+	min-width: 180px;
+	padding: 1rem;
+	border: none;
+}
+
+.form-input > :is(input, textarea) {
 	max-width: none;
 }
 
@@ -1219,9 +1271,10 @@ form {
 }
 
 .countWords+p {
-	font-size: 1rem;
+	font-size: 0.85rem;
 	text-align: right;
-	margin-bottom: -5px;
+	margin-bottom: -18px;
+	align-self: flex-end;
 }
 
 /* Image Upload */
@@ -1235,18 +1288,19 @@ form {
 
 .image-upload-section label {
 	float: none;
+	position: static;
 }
 
 .image-upload-section input {
 	display: none;
 }
 
-.image-upload-section button {
-	display: block;
+.image-upload-section .form-button {
 	color: var(--primary);
 	background-color: white;
 	text-shadow: none;
 	border: 1px solid var(--primary);
+	margin: 0;
 }
 
 .image-upload-section button:hover {
@@ -1302,6 +1356,8 @@ form {
 	background-color: red;
 	border: 1px solid red;
 }
+
+/* End */
 
 .align-container {
 	display: flex;
