@@ -1,5 +1,5 @@
 export default class Icon {
-    node;
+    node; // HTMLElement
 
     constructor(icon) {
         this.node = icon;

@@ -1,13 +1,14 @@
 import { Hamburger, TopNav } from './Hamburger';
 
 export default class Navigation {
-    fullNav = null;
-    topNav = null;
-    hamburger = null;
-    hamburgerButton = null;
-    hamburgerWrapper = null;
+    fullNav; // HTMLElement
+    topNav; // TopNav
+    hamburger; // Hamburger
+    hamburgerButton; // HTMLElement
+    hamburgerWrapper; // HTMLElement
 
     constructor(nav) {
+        // HTMLElement nav
         this.getNavItems = this.getNavItems.bind(this);
         this.handleResize = this.handleResize.bind(this)
         this.moveAllToHamburger = this.moveAllToHamburger.bind(this)
@@ -26,6 +27,8 @@ export default class Navigation {
     getNavItems() {
         for (let i = 0; i < this.fullNav.children.length; i++) {
             const child = this.fullNav.children[i];
+            // child is HTMLElement
+
             if (child.classList.contains("topNav")) {
                 this.topNav = new TopNav(child);
             } else if (child.classList.contains("hamburgerWrapper")) {
@@ -39,6 +42,8 @@ export default class Navigation {
 
         for (let i = 0; i < this.hamburgerWrapper.children.length; i++) {
             const child = this.hamburgerWrapper.children[i];
+            // child is HTMLElement
+
             if (child.classList.contains("hamburgerButton")) {
                 this.hamburgerButton = child;
             } else if (child.classList.contains("hamburger")) {
@@ -53,10 +58,12 @@ export default class Navigation {
 
     // Public Null
     handleResize() {
+        // for mobile
         if (document.documentElement.clientWidth <= 768) {
             this.moveAllToHamburger();
             this.hamburger.toMobile();
         }
+        // for desktop
         else {
             this.moveAllToNav();
             this.hamburger.toDesktop();
@@ -64,7 +71,6 @@ export default class Navigation {
                 this.moveOneToHamburger();
             }
         }
-        
     }
 
     // Private Null
@@ -81,10 +87,7 @@ export default class Navigation {
 
     // Private Null
     moveOneToHamburger() {
-        if (this.hamburgerButton.classList.contains("hide")) {
-            this.hamburgerButton.classList.remove("hide");
-        }
-
+        this.hamburgerButton.classList.remove("hide");
         this.topNav.hideOne();
         this.hamburger.showOne();
     }
@@ -95,6 +98,7 @@ export default class Navigation {
         let navWidth = navigationRect.right - navigationRect.left;
         let linksWidth = this.topNav.getTotalWidth();
 
+        // 50 is icon width, refactor later to use actual icon width
         if (linksWidth > navWidth - 50) {
             return true;
         }
@@ -103,6 +107,7 @@ export default class Navigation {
 
     // Private HTMLElement
     getParentIfTagMatchesNode (node, excludedTag) {
+        // HTMLElement node, String excludedTag
         if (node.tagName == excludedTag) {
             return node.parentElement
         } else {
@@ -111,7 +116,8 @@ export default class Navigation {
     }
 
     // Private Null
-    handleMouseOverHamburger(link, hamburger) {
+    handleMouseOverHamburger(link) {
+        // Link link
         if (link.hasChildren) {
             const linkBox = link.node.getBoundingClientRect();
             if (!this.hamburger.isMobile) {
@@ -123,7 +129,8 @@ export default class Navigation {
     }
 
     // Private Null
-    handleMouseLeaveHamburger(link, hamburger) {
+    handleMouseLeaveHamburger(link) {
+        // Link link
         if (link.hasChildren) {
             link.childLinksNode.style.right = "0px";
             link.childLinksNode.classList.add("hide");
@@ -132,6 +139,7 @@ export default class Navigation {
 
     // Private Null
     handleMouseOverNav(link) {
+        // Link link
         if (link.hasChildren) {
             const linkBox = link.node.getBoundingClientRect();
             const height = linkBox.bottom - linkBox.top;
@@ -142,6 +150,7 @@ export default class Navigation {
 
     // Private Null
     handleMouseLeaveNav(link) {
+        // Link link
         if (link.hasChildren) {
             link.childLinksNode.classList.add("hide");
         }
@@ -149,6 +158,7 @@ export default class Navigation {
 
     // Private Null
     handleHamburgerButton(hamburger) {
+        // Hamburger hamburger
         if (hamburger.isHidden) {
             hamburger.show();
         } else {
@@ -158,6 +168,7 @@ export default class Navigation {
 
     // Private Null
     handleExpandSubMenuButton(link) {
+        // Link link
         if (link.childLinksNode.style.maxHeight) {
             link.mobileIcon.node.classList.remove("spin");
             link.childLinksNode.style.maxHeight = null;
@@ -168,7 +179,8 @@ export default class Navigation {
     }
 
     // Private Null
-    handlePageClick(e, hamburgerWrapper, hamburger) {
+    handlePageClick(e, hamburger) {
+        // Hamburger hamburger
         const getParents = (elem) => {
             if (elem.tagName == "HTML") {
                 return [elem];
@@ -176,16 +188,12 @@ export default class Navigation {
             return [elem.parentElement, ...getParents(elem.parentElement)]
         }
         
-        const hasParent = (elem, parent) => {
+        const hasParent = (elem, parentClass) => {
             let parents = getParents(elem);
             for (let i = 0; i < parents.length; i++) {
-                const item = parents[i];
-                for (let j = 0; j < item.classList.length; j++) {
-                    const parentClass = item.classList[j];
-                    if (parentClass == parent) {
-                        return true;
-                    }
-                    
+                const parent = parents[i];
+                if (parent.classList.contains(parentClass)) {
+                    return true;
                 }
             }
             return false;
@@ -206,11 +214,11 @@ export default class Navigation {
     addEventListeners() {
         this.hamburger.links.forEach(link => {
             link.node.addEventListener("mouseover", () => {
-                this.handleMouseOverHamburger(link, this.hamburger);
+                this.handleMouseOverHamburger(link);
             })
 
             link.node.addEventListener("mouseleave", () => {
-                this.handleMouseLeaveHamburger(link, this.hamburger);
+                this.handleMouseLeaveHamburger(link);
             })
             if (link.hasChildren) {
                 link.mobileIcon.node.addEventListener("click", () => {
@@ -235,7 +243,7 @@ export default class Navigation {
         })
 
         window.addEventListener("click", (e) => {
-            this.handlePageClick(e, this.hamburgerWrapper, this.hamburger);
+            this.handlePageClick(e, this.hamburger);
         })
     }
 }

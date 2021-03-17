@@ -1,7 +1,7 @@
 import Icon from './Icon';
 
 class Link {
-    node;
+    node; // HTMLElement
 
     constructor(link) {
         this.node = link;
@@ -34,18 +34,20 @@ class Link {
 }
 
 export class TopNavLink extends Link {
-    node;
-    link;
-    hasChildren = false;
-    icon;
-    childLinksNode;
-    childLinks = [];
+    node; // HTMLElement
+    link; // HTMLElement
+    hasChildren = false; // Bool
+    icon; // Icon
+    childLinksNode; // HTMLElement
+    childLinks = []; // Array<HTMLElement>
 
     constructor(link) {
         super(link);
         this.node = link;
         for (let i = 0; i < this.node.children.length; i++) {
             const child = this.node.children[i];
+            // child is HTMLElement
+
             if (child.classList.contains("navLink")) {
                 this.link = child;
                 for (let j = 0; j < child.children.length; j++) {
@@ -78,13 +80,13 @@ export class TopNavLink extends Link {
 }
 
 export class HamburgerNavLink extends Link {
-    node;
-    link;
-    hasChildren = false;
-    desktopIcon;
-    mobileIcon;
-    childLinksNode;
-    childLinks = [];
+    node; // HTMLElement
+    link; // HTMLElement
+    hasChildren = false; // Bool
+    desktopIcon; // Icon
+    mobileIcon; // Icon
+    childLinksNode; // HTMLElement
+    childLinks = []; // Array<HTMLElement>
 
     constructor(link) {
         super(link);
