@@ -7,12 +7,14 @@ export default class Icon {
         this.hide = this.hide.bind(this)
     }
 
+    // Public Null
     show() {
         if (this.node.classList.contains("hide")) {
             this.node.classList.remove("hide");
         }
     }
 
+    // Public Null
     hide() {
         if (!this.node.classList.contains("hide")) {
             this.node.classList.add("hide");

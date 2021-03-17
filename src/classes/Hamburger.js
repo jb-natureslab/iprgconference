@@ -10,10 +10,12 @@ class NavMenu {
         this.showAll = this.showAll.bind(this)
     }
 
+    // Public Null
     hideAll() {
         this.links.forEach(link => link.hide());
     }
 
+    // Public Null
     showAll() {
         this.links.forEach(link => link.show());
     }
@@ -48,16 +50,19 @@ export class Hamburger extends NavMenu {
         return false;
     }
 
+    // Public Null
     show() {
         this.isHidden = false;
         this.node.classList.remove("hide");
     }
 
+    // Public Null
     hide() {
         this.isHidden = true;
         this.node.classList.add("hide");
     }
 
+    // Public Null
     toMobile() {
         this.isMobile = true;
         this.node.classList.add("mobile");
@@ -71,6 +76,7 @@ export class Hamburger extends NavMenu {
         })
     }
 
+    // Public Null
     toDesktop() {
         this.isMobile = false;
         this.node.classList.remove("mobile");
@@ -84,6 +90,7 @@ export class Hamburger extends NavMenu {
         })
     }
 
+    // Public Null
     showOne() {
         for (let i = this.links.length - 1; i >= 0; i--) {
             const link = this.links[i];
@@ -112,6 +119,7 @@ export class TopNav extends NavMenu {
 
     }
 
+    // Public Null
     hideOne() {
         for (let i = this.links.length - 1; i >= 0; i--) {
             const link = this.links[i];
@@ -122,6 +130,7 @@ export class TopNav extends NavMenu {
         }
     }
 
+    // Public Int
     getTotalWidth() {
         let width = 0;
         this.links.forEach(link => {

@@ -1,4 +1,3 @@
-import { TopNavLink, HamburgerNavLink } from './Link';
 import { Hamburger, TopNav } from './Hamburger';
 
 export default class Navigation {
@@ -23,6 +22,7 @@ export default class Navigation {
         this.addEventListeners();
     }
 
+    // Private Null
     getNavItems() {
         for (let i = 0; i < this.fullNav.children.length; i++) {
             const child = this.fullNav.children[i];
@@ -51,6 +51,7 @@ export default class Navigation {
         }
     }
 
+    // Public Null
     handleResize() {
         if (document.documentElement.clientWidth <= 768) {
             this.moveAllToHamburger();
@@ -66,16 +67,19 @@ export default class Navigation {
         
     }
 
+    // Private Null
     moveAllToHamburger() {
         this.hamburger.showAll()
         this.topNav.hideAll()
     }
     
+    // Private Null
     moveAllToNav() {
         this.hamburger.hideAll();
         this.topNav.showAll();
     }
 
+    // Private Null
     moveOneToHamburger() {
         if (this.hamburgerButton.classList.contains("hide")) {
             this.hamburgerButton.classList.remove("hide");
@@ -85,6 +89,7 @@ export default class Navigation {
         this.hamburger.showOne();
     }
 
+    // Private Bool
     isNavWrapped() {
         let navigationRect = this.fullNav.getBoundingClientRect();
         let navWidth = navigationRect.right - navigationRect.left;
@@ -96,6 +101,7 @@ export default class Navigation {
         return false;
     }
 
+    // Private HTMLElement
     getParentIfTagMatchesNode (node, excludedTag) {
         if (node.tagName == excludedTag) {
             return node.parentElement
@@ -104,6 +110,7 @@ export default class Navigation {
         }
     }
 
+    // Private Null
     handleMouseOverHamburger(link, hamburger) {
         if (link.hasChildren) {
             const linkBox = link.node.getBoundingClientRect();
@@ -115,6 +122,7 @@ export default class Navigation {
         }
     }
 
+    // Private Null
     handleMouseLeaveHamburger(link, hamburger) {
         if (link.hasChildren) {
             link.childLinksNode.style.right = "0px";
@@ -122,6 +130,7 @@ export default class Navigation {
         }
     }
 
+    // Private Null
     handleMouseOverNav(link) {
         if (link.hasChildren) {
             const linkBox = link.node.getBoundingClientRect();
@@ -131,12 +140,14 @@ export default class Navigation {
         }
     }
 
+    // Private Null
     handleMouseLeaveNav(link) {
         if (link.hasChildren) {
             link.childLinksNode.classList.add("hide");
         }
     }
 
+    // Private Null
     handleHamburgerButton(hamburger) {
         if (hamburger.isHidden) {
             hamburger.show();
@@ -145,6 +156,7 @@ export default class Navigation {
         }
     }
 
+    // Private Null
     handleExpandSubMenuButton(link) {
         if (link.childLinksNode.style.maxHeight) {
             link.mobileIcon.node.classList.remove("spin");
@@ -155,6 +167,7 @@ export default class Navigation {
         }
     }
 
+    // Private Null
     handlePageClick(e, hamburgerWrapper, hamburger) {
         const getParents = (elem) => {
             if (elem.tagName == "HTML") {
@@ -184,10 +197,12 @@ export default class Navigation {
 
     }
 
+    // Private Null
     show() {
         this.fullNav.classList.add("show");
     }
 
+    // Private Null
     addEventListeners() {
         this.hamburger.links.forEach(link => {
             link.node.addEventListener("mouseover", () => {

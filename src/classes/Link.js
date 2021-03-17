@@ -10,18 +10,21 @@ class Link {
         this.isHidden = this.isHidden.bind(this)
     }
 
+    // Public Null
     hide() {
         if (!this.node.classList.contains("hide")) {
             this.node.classList.add("hide");
         }
     }
 
+    // Public Null
     show() {
         if (this.node.classList.contains("hide")) {
             this.node.classList.remove("hide");
         }
     }
 
+    // Public Bool
     isHidden() {
         if (this.node.classList.contains("hide")) {
             return true;
@@ -67,6 +70,7 @@ export class TopNavLink extends Link {
         this.getWidth = this.getWidth.bind(this);
     }
 
+    // Public Int
     getWidth() {
         const linkRect = this.node.getBoundingClientRect();
         return linkRect.right - linkRect.left;
