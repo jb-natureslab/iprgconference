@@ -1,8 +1,8 @@
 import {HamburgerNavLink, TopNavLink} from './Link';
 
 class NavMenu {
-    node;
-    links = [];
+    node; // HTMLElement
+    links = []; // Array<Link>
 
     constructor(menu) {
         this.node = menu;
@@ -22,14 +22,25 @@ class NavMenu {
 }
 
 export class Hamburger extends NavMenu {
-    node;
-    isMobile = false;
-    isHidden = true;
-    links = [];
+
+    // Public Bool
+    get isMobile() {
+        if (this.node.classList.contains("mobile")) {
+            return true;
+        }
+        return false;
+    }
+
+    // Public Bool
+    get isHidden() {
+        if (this.node.classList.contains("hide")) {
+            return true;
+        }
+        return false;
+    }
 
     constructor(menu) {
         super(menu);
-        this.node = menu;
         for (let i = 0; i < this.node.children.length; i++) {
             const link = this.node.children[i];
             let newLink = new HamburgerNavLink(link);
@@ -43,28 +54,18 @@ export class Hamburger extends NavMenu {
         this.showOne = this.showOne.bind(this);
     }
 
-    get isMobile() {
-        if (this.node.classList.contains("mobile")) {
-            return true;
-        }
-        return false;
-    }
-
     // Public Null
     show() {
-        this.isHidden = false;
         this.node.classList.remove("hide");
     }
 
     // Public Null
     hide() {
-        this.isHidden = true;
         this.node.classList.add("hide");
     }
 
     // Public Null
     toMobile() {
-        this.isMobile = true;
         this.node.classList.add("mobile");
         this.links.forEach(link => {
             if (link.desktopIcon) {
@@ -78,7 +79,6 @@ export class Hamburger extends NavMenu {
 
     // Public Null
     toDesktop() {
-        this.isMobile = false;
         this.node.classList.remove("mobile");
         this.links.forEach(link => {
             if (link.desktopIcon) {
@@ -103,12 +103,18 @@ export class Hamburger extends NavMenu {
 }
 
 export class TopNav extends NavMenu {
-    node;
-    links = [];
+
+    // Public Int
+    get totalWidth() {
+        let width = 0;
+        this.links.forEach(link => {
+            width += link.width;
+        });
+        return width;
+    }
 
     constructor(menu) {
         super(menu)
-        this.node = menu;
         for (let i = 0; i < this.node.children.length; i++) {
             const link = this.node.children[i];
             let newLink = new TopNavLink(link);
@@ -128,14 +134,5 @@ export class TopNav extends NavMenu {
                 break;
             }
         }
-    }
-
-    // Public Int
-    getTotalWidth() {
-        let width = 0;
-        this.links.forEach(link => {
-            width += link.getWidth();
-        });
-        return width;
     }
 }

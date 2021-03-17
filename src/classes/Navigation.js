@@ -1,4 +1,4 @@
-import { Hamburger, TopNav } from './Hamburger';
+import { Hamburger, TopNav } from './NavMenu';
 
 export default class Navigation {
     fullNav; // HTMLElement
@@ -96,7 +96,7 @@ export default class Navigation {
     isNavWrapped() {
         let navigationRect = this.fullNav.getBoundingClientRect();
         let navWidth = navigationRect.right - navigationRect.left;
-        let linksWidth = this.topNav.getTotalWidth();
+        let linksWidth = this.topNav.totalWidth;
 
         // 50 is icon width, refactor later to use actual icon width
         if (linksWidth > navWidth - 50) {

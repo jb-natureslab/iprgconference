@@ -34,16 +34,20 @@ class Link {
 }
 
 export class TopNavLink extends Link {
-    node; // HTMLElement
     link; // HTMLElement
     hasChildren = false; // Bool
     icon; // Icon
     childLinksNode; // HTMLElement
     childLinks = []; // Array<HTMLElement>
 
+    // Public Int
+    get width() {
+        const linkRect = this.node.getBoundingClientRect();
+        return linkRect.right - linkRect.left;
+    }
+
     constructor(link) {
         super(link);
-        this.node = link;
         for (let i = 0; i < this.node.children.length; i++) {
             const child = this.node.children[i];
             // child is HTMLElement
@@ -68,19 +72,11 @@ export class TopNavLink extends Link {
                 this.childLinks = [...this.childLinks, link];
             }
         }
-
-        this.getWidth = this.getWidth.bind(this);
     }
 
-    // Public Int
-    getWidth() {
-        const linkRect = this.node.getBoundingClientRect();
-        return linkRect.right - linkRect.left;
-    }
 }
 
 export class HamburgerNavLink extends Link {
-    node; // HTMLElement
     link; // HTMLElement
     hasChildren = false; // Bool
     desktopIcon; // Icon
@@ -90,7 +86,6 @@ export class HamburgerNavLink extends Link {
 
     constructor(link) {
         super(link);
-        this.node = link;
         for (let i = 0; i < this.node.children.length; i++) {
             const child = this.node.children[i];
             if (child.classList.contains("hamburgerLink")) {
