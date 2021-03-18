@@ -12,72 +12,82 @@ const getMaxWordCount = (element) => {
 }
 
 const convertStringToArray = (str) => {
-    let splitStr = str.split(" ");
-    return splitStr.filter(d => d != "");
+    return str.split(" ");
+}
+
+const sanitiseArray = (strArray) => {
+    return strArray.filter(d => d != "");
+}
+
+const getCleanStringArray = (str) => {
+    const strArray = convertStringToArray(str);
+    return sanitiseArray(strArray);
 }
 
 const isStringWithinWordCount = (str, maxCount) => {
-    let splitStr = convertStringToArray(str);
-    let count = splitStr.length;
-    if (count >= maxCount) {
-        return false;
-    }
-    return true;
+    const cleanStrArray = getCleanStringArray(str);
+    let count = cleanStrArray.length;
+    return count <= maxCount;
 }
 
-const getCountElement = (element) => {
-    let children = element.nextSibling.children;
-    let countElement;
+const getCountElement = (counterWrapper) => {
+    const children = counterWrapper.children;
     for (let index = 0; index < children.length; index++) {
-        if (children[index].classList.contains("count")) {
-            countElement = children[index];
+        const child = children[index];
+        if (child.classList.contains("count")) {
+            return child;
         }
     }
-    return countElement;
 }
 
 const trimStringToMaxCount = (str, maxCount) => {
-    let splitStr = convertStringToArray(str);
-    return splitStr.filter((d, i) => i < maxCount).join(" ");
+    const cleanStrArray = getCleanStringArray(strArray);
+    const trimmedStrArray = cleanStrArray.slice(0, maxCount);
+    const newStr = trimmedStrArray.join(" ");
+    return newStr;
 }
 
-const findMaxCount = (maxCountsArray, element) => {
-    return maxCountsArray.filter(d => d.id == element.id)[0].maxCount;
+const createCounter = (maxCount) => {
+    let counterWrapper = document.createElement("p");
+    counterWrapper.innerHTML = `Word Count: <span class="count">0</span>/<span>${maxCount}</span>`;
+    return counterWrapper
+}
+
+const insertCounter = (wordsCounted, counterWrapper) => {
+    wordsCounted.parentNode.insertBefore(counterWrapper, wordsCounted.nextSibling);
 }
 
 // End of helper functions
 
 
-const updateWordCount = (e, maxCountsArray) => {
+const updateWordCount = (e, counterWrapper) => {
     let count = 0;
-    let maxCount = findMaxCount(maxCountsArray, e.target);
+    let maxCount = getMaxWordCount(e.target);
 
     if (isStringWithinWordCount(e.target.value, maxCount)) {
-        count = convertStringToArray(e.target.value).length;
+        count = getCleanStringArray(e.target.value).length;
     } else {
         e.target.value = trimStringToMaxCount(e.target.value, maxCount);
         count = maxCount;
     }
 
-    let countElement = getCountElement(e.target);
+    let countElement = getCountElement(counterWrapper);
     countElement.innerHTML = count;
 }
 
 export const implementWordCount = () => {
-    var maxCountsById = [];
     let wordCountElements = document.getElementsByClassName("countWords");
     
     for (let index = 0; index < wordCountElements.length; index++) {
-        let maxCount = getMaxWordCount(wordCountElements[index]);
-        let counterWrapper = document.createElement("p");
-    
-        maxCountsById = [...maxCountsById, {
-            id: wordCountElements[index].id,
-            maxCount,
-        }]
-    
-        counterWrapper.innerHTML = `Word Count: <span class="count">0</span>/<span>${maxCount}</span>`;
-        wordCountElements[index].parentNode.insertBefore(counterWrapper, wordCountElements[index].nextSibling);
-        wordCountElements[index].addEventListener('input', (e) => updateWordCount(e, maxCountsById));
+        const wordsCounted = wordCountElements[index];
+        if (wordsCounted.tagName != "TEXTAREA") {
+            continue;
+        }
+
+        let maxCount = getMaxWordCount(wordsCounted);
+        let counterWrapper = createCounter(maxCount);
+        insertCounter(wordsCounted, counterWrapper);
+        
+        wordsCounted.addEventListener('input', (e) => updateWordCount(e, counterWrapper));
     }
 }
