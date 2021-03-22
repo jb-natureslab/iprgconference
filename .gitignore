@@ -10,6 +10,7 @@ perch/*
 !perch/templates/
 !perch/templates/**
 !.htaccess
+!create-checkout-session.php
 
 !src
 !src/*

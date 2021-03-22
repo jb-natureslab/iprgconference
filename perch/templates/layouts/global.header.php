@@ -27,6 +27,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
 	</noscript>
 	<link rel="stylesheet" href="/assets/css/stylesheet.css?v=<?php echo rand(); ?>">
+	<script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
