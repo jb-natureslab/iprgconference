@@ -1,13 +1,15 @@
 <?php
+/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+*/
 
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Stripe\Stripe;
 
-require '/vendor/autoload.php';
+require '../vendor/autoload.php';
 
 $app = new \Slim\App;
 
