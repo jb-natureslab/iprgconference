@@ -22,8 +22,10 @@
 	          method: 'POST',
 	        })
 	        .then(function(response) {
-		        console.log(response);
-	          return stripe.redirectToCheckout({ sessionId: response });
+	          return response.json();
+	        })
+	        .then(function(session) {
+	          return stripe.redirectToCheckout({ sessionId: session.id });
 	        })
 	        .then(function(result) {
 	          // If `redirectToCheckout` fails due to a browser or network
