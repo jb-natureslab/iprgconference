@@ -4,7 +4,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Stripe\Stripe;
 
-require '../../../vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 $app = new \Slim\App;
 
