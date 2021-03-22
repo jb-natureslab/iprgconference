@@ -10,7 +10,7 @@ use Stripe\Stripe;
 require '../vendor/autoload.php';
 
 $stripe = new \Stripe\StripeClient(
-  'sk_test_51ITOTYGc8mzhKHdoEodxiWIjy0jZLIcEpP9R5M5Rk94x15IbEo6M0pz5HC7b4RsZmS6UebIXWhjeyxn3uI8xdAcb00qqqqHW6n'
+  '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'
 );
 $session = $stripe->checkout->sessions->create([
   'success_url' => 'https://conference.iprg.info/success/',
@@ -18,7 +18,7 @@ $session = $stripe->checkout->sessions->create([
   'payment_method_types' => ['card'],
   'line_items' => [
     [
-      'price' => 'price_1ITOZrGc8mzhKHdoJaOPXUqL',
+      'price' => 'price_1IXmyhGc8mzhKHdolWQUwuLh',
       'quantity' => 1,
     ],
   ],
