@@ -21,9 +21,8 @@
 	        fetch('/create-checkout-session', {
 	          method: 'POST',
 	        })
-	        .then(function(session) {
-		        console.log(session);
-	          return stripe.redirectToCheckout({ sessionId: session });
+	        .then(function(response) {
+	          return stripe.redirectToCheckout({ sessionId: response });
 	        })
 	        .then(function(result) {
 	          // If `redirectToCheckout` fails due to a browser or network
