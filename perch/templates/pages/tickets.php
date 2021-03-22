@@ -25,6 +25,7 @@
 	          return response.json();
 	        })
 	        .then(function(session) {
+		        console.log(session.id);
 	          return stripe.redirectToCheckout({ sessionId: session.id });
 	        })
 	        .then(function(result) {
