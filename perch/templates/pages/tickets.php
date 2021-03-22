@@ -18,7 +18,7 @@
 	      checkoutButton.addEventListener('click', function() {
 	        // Create a new Checkout Session using the server-side endpoint you
 	        // created in step 3.
-	        fetch('/create-checkout-session.php', {
+	        fetch('/create-checkout-session', {
 	          method: 'POST',
 	        })
 	        .then(function(response) {
