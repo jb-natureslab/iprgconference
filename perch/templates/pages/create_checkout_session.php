@@ -25,5 +25,9 @@ $session = $stripe->checkout->sessions->create([
   'mode' => 'payment',
 ]);
 
-$id = $session->id;
-echo $id;
+$sessionID = $session->id;
+$array = ['id' => $sessionID];
+$json = json_encode($array);
+
+header('Content-Type: application/json');
+echo $json;
