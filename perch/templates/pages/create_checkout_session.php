@@ -1,7 +1,9 @@
 <?php
+/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+*/
 
 use Stripe\Stripe;
 
@@ -29,4 +31,6 @@ $session = $stripe->checkout->sessions->create([
 
 $id = $session->id;
 
-echo $id;
+$array = array('id',$id);
+
+echo $json_encode($array);
