@@ -33,4 +33,5 @@ $id = $session->id;
 
 $array = array('id',$id);
 
-echo $json_encode($array);
+header('Content-Type: application/json');
+echo json_encode($array);
