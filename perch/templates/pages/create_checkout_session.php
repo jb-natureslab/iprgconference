@@ -16,16 +16,12 @@ $session = $stripe->checkout->sessions->create([
   'success_url' => 'https://conference.iprg.info/success/',
   'cancel_url' => 'https://conference.iprg.info',
   'payment_method_types' => ['card'],
-  'line_items' => [[
-      'price_data' => [
-        'currency' => 'eur',
-        'product_data' => [
-          'name' => 'IPRG 2021 Conference Ticket',
-        ],
-        'unit_amount' => 2000,
-      ],
+  'line_items' => [
+    [
+      'price' => 'price_1ITOZrGc8mzhKHdoJaOPXUqL',
       'quantity' => 1,
-  ]],
+    ],
+  ],
   'mode' => 'payment',
 ]);
 
