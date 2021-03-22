@@ -7,7 +7,7 @@
 
 <div class="wrap">
 	<div class="restrict narrow">
-		<button id="checkout-button">Checkout</button>
+		<button id="checkout-button">Buy a Ticket €20</button>
 		<script type="text/javascript">
 		// Create an instance of the Stripe object with your publishable API key
 		var stripe = Stripe(
