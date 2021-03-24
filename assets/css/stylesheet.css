@@ -1571,7 +1571,7 @@ form {
 }
 
 .text-logo-image>a>img {
-	max-width: 160px;
+	max-width: 240px;
 }
 
 @media screen and (max-width: 768px) {
