@@ -1630,3 +1630,23 @@ form {
 .alert-bar a:hover {
 	color: var(--grey);
 }
+
+.hero .hero-buttons {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+}
+
+.hero .hero-buttons a:first-child button {
+	background-color: var(--secondary);
+}
+
+.hero-buttons button {
+	margin: 0;
+	display: inline-block;
+	cursor: pointer;
+}
+.hero-buttons a {
+	color: white;
+	text-decoration: none;
+}

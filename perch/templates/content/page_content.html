@@ -21,6 +21,15 @@
 			<perch:if exists="logo">
 				<img src="<perch:content id="logo" label="Logo" type="image" width="120" height="120" crop="true" filter="imgix" imgix-opts="auto=format,compress" />" alt="Logo" >
 			</perch:if>
+			<perch:repeater id="buttons" label="Buttons">
+				<perch:before><div class="hero-buttons"></perch:before>
+						<a href="<perch:content id="button-link" type="text" label="Button Link">"> 
+							<button>
+								<perch:content type="text" label="Button Text" id="button-text">
+							</button>
+						</a>
+				<perch:after></div></perch:after>
+			</perch:repeater>
 		</div>
 		</div>
 	</perch:block>
