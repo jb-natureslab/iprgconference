@@ -1459,7 +1459,7 @@ form {
 	display: flex;
 	gap: 40px;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	width: 100%;
 }
 
@@ -1571,7 +1571,7 @@ form {
 }
 
 .text-logo-image>a>img {
-	max-height: 140px;
+	max-width: 160px;
 }
 
 @media screen and (max-width: 768px) {
