@@ -31,6 +31,22 @@
 </head>
 
 <body>
+	<?php
+	$requestArray = explode("/", $_SERVER["REQUEST_URI"]);
+	$isTicketPage = false;
+	foreach ($requestArray as $item) {
+		if ($item == "tickets") {
+			$isTicketPage = true;
+		}
+	}
+	if (!$isTicketPage) {
+		echo '<div class="alert-bar">
+				<div class="restrict">
+					<h4><a href="/tickets">Click here to book tickets for the conference.</a></h4>
+				</div>
+				</div>';
+	}
+	?>
 	<header>
 		<div class="restrict">
 			<p class="logo"><a href="/"><?php perch_content('Logo'); ?></a></p>

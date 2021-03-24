@@ -1,4 +1,11 @@
 <perch:blocks>
+	<perch:block type="alert-bar" label="Alert Bar">
+		<div class="alert-outer">
+			<div class="restrict">
+				<h4><perch:content id="alert" type="textarea" editor="redactor" /></h4>
+			</div>
+		</div>
+	</perch:block>
 
 	<perch:block type="hero" label="Hero">
 		<div class="hero" style="background-image:url('<perch:content id="image_large" label="Image" type="image" width="1440" height="500" crop="true" filter="imgix" imgix-opts="auto=format,compress" />');background-size:cover;">

@@ -52,6 +52,7 @@ ol > li {
 	--bright: #95c11f;
 	--pale: #e5edca;
 	--grey: #d5d8ce;
+	--header: #706E6F;
 }
 
 /* BODY STYLING */
@@ -258,7 +259,7 @@ a.button:hover, button:hover, input[type=submit]:hover {
 /* HEADER */
 
 header {
-	border-bottom: 1px solid var(--grey);
+	background-color: var(--header);
 }
 
 header .restrict {
@@ -271,6 +272,12 @@ header .restrict {
 header .logo {
 	font-weight: 700;
 	justify-self: start;
+	max-height: 140px;
+}
+
+header .logo img {
+	height: 100%;
+	width: auto;
 }
 
 header .logo a {
@@ -1040,6 +1047,7 @@ aside img {
 	justify-content: flex-end;
 	align-items: center;
 	gap: 10px;
+	color: white;
 }
 
 .navLink {
@@ -1077,8 +1085,8 @@ aside img {
 	position: relative;
 	top: 1px;
 	cursor: pointer;
-	background-color: white;
-	color: black;
+	color: white;
+	background-color: var(--header);
 	text-shadow: none;
 	margin: 0px;
 	padding: 0px;
@@ -1088,8 +1096,8 @@ aside img {
 
 .hamburgerButton:hover {
 	/* To override earlier style */
-	background-color: white;
-	color: black;
+	background-color: var(--header);
+	color: white;
 }
 
 .hamburgerItem {
@@ -1603,4 +1611,22 @@ form {
 		width: 100%;
 		gap: 20px;
 	}
+}
+
+.alert-bar {
+	background-color: var(--secondary);
+	padding: 1rem 0;
+}
+
+.alert-bar h4 {
+	margin: 0;
+	text-align: center;
+}
+
+.alert-bar a {
+	color: white;
+}
+
+.alert-bar a:hover {
+	color: var(--grey);
 }
