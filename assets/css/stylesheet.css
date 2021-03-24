@@ -278,6 +278,7 @@ header .logo {
 header .logo img {
 	height: 100%;
 	width: auto;
+	object-fit: contain;
 }
 
 header .logo a {
