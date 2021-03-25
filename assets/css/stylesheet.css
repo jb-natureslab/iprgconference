@@ -465,32 +465,42 @@ footer ul.social li span {
 
 .hero {
 	width: 100%;
-	float: left;
-	min-height: 500px;
-	margin-bottom: 2rem;
+	min-height: 550px;
+	position: relative;
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	margin-bottom: 2rem;
+}
+
+.hero-content {
+	width: 100%;
+	height: 100%;
+	display: flex;
 	justify-content: center;
-}
-
-.hero div {
+	align-items: center;
+	flex-direction: column;
+	/* background: rgba(0, 0, 0, 0.158); */
+	/* background: linear-gradient(162deg, rgba(150, 193, 31, 0.726) 0%, rgba(191, 33, 91, 0.671) 100%); */
+	background: linear-gradient(162deg, rgba(192, 238, 65, 0.726) 0%, rgba(233, 61, 124, 0.671) 100%);
+	flex-grow: 2;
 	text-align: center;
-	max-width: 1280px;
-	margin: 0 auto;
-	display: block;
-	padding: 0 1rem;
 }
 
-.hero div h1, .hero div p {
-	color: #fff;
-	text-shadow: 0px 0px 2px #333;
+.hero-content :is(h1, p) {
+	color: white;
+	text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.144);
 }
 
-.hero>div>img {
-	max-width: 100px;
-	height: auto;
-	margin-top: 20px;
-	background-color: white;
+.hero-content h1 {
+	font-size: 5rem;
+	margin-bottom: 0;
+	max-width: 25ch;
+}
+
+.hero-content p {
+	font-size: 1.7rem;
+	/* font-weight: bolder; */
+	font-style: italic;
 }
 
 @media screen and (max-width:1024px) {
@@ -513,6 +523,7 @@ footer ul.social li span {
 		min-height: 200px;
 	}
 }
+
 
 /* COLUMNS */
 
@@ -1616,7 +1627,7 @@ form {
 
 .alert-bar {
 	background-color: var(--secondary);
-	padding: 1rem 0;
+	padding: 0.5rem 0;
 }
 
 .alert-bar h4 {
@@ -1632,13 +1643,15 @@ form {
 	color: var(--grey);
 }
 
-.hero .hero-buttons {
+.hero-buttons {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 20px;
 	justify-content: center;
+	padding-bottom: 20px;
 }
 
-.hero .hero-buttons a:first-child button {
+.hero-buttons a:first-child button {
 	background-color: var(--secondary);
 }
 
