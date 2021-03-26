@@ -4,14 +4,15 @@
         data-children="<perch:if exists="subitems">true<perch:else>false</perch:if>"
     >
         <perch:if exists="subitems">
-            <i class="fas fa-angle-down mobile linkIcon hide"></i>
-        </perch:if>
-        <a href="<perch:pages id="pagePath" />" class="hamburgerLink">
-            <perch:if exists="subitems">
-                <i class="fas fa-angle-left linkIcon hide"></i>
-            </perch:if>
+        <button class="hamburgerLabel hamburgerLink">
+            <i class="fas fa-angle-down linkIcon"></i>
             <perch:pages id="pageNavText" />
-        </a>
+        </button>
+        <perch:else>
+            <a href="<perch:pages id="pagePath" />" class="hamburgerLink">
+                <perch:pages id="pageNavText" />
+            </a>
+        </perch:if>
         <perch:pages id="subitems" encode="false"/>
     </li>
     <perch:after></ul></perch:after>

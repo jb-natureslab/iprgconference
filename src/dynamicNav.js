@@ -5,7 +5,7 @@ const implementNav = () => {
     let navigationArray = [];
     for (let i = 0; i < navigationItems.length; i++) {
         const nav = navigationItems[i];
-        let navigation = new Navigation(nav);
+        let navigation = new Navigation(nav, {"Abstract Submission": "Abstract", "Scientific Committee": "Science"});
         navigationArray = [...navigationArray, navigation];
     }
     if (navigationArray) {

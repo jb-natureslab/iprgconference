@@ -990,7 +990,7 @@ aside img {
 	grid-column: auto;
 	justify-content: flex-end;
 	align-items: center;
-	opacity: 0;
+	opacity: 1;
 	gap: 20px;
 	z-index: 10;
 }
@@ -1016,20 +1016,21 @@ aside img {
 	position: relative;
 	margin: 0;
 	display: flex;
+	align-items: center;
 }
 
 .navItem {
 	justify-content: flex-end;
 }
 
-.navChildItems, .hamburgerChildItems {
+.navChildItems {
 	position: absolute;
 	opacity: 1;
 	pointer-events: all;
 	min-width: 100%;
 }
 
-.navChildItems.hide, .hamburgerChildItems.hide {
+.navChildItems.hide {
 	opacity: 0;
 	pointer-events: none;
 }
@@ -1041,6 +1042,10 @@ aside img {
 
 .navChildItem, .hamburgerChildItem {
 	background-color: var(--primary);
+}
+
+.hamburgerChildItem {
+	width: 100%;
 }
 
 .navChildLink, .hamburgerLink, .hamburgerChildLink {
@@ -1060,14 +1065,34 @@ aside img {
 	align-items: center;
 	gap: 10px;
 	color: white;
+	cursor: pointer;
 }
 
 .navLink {
 	flex-direction: row-reverse;
 }
 
-.navLink i {
+.navLabel, .hamburgerLabel {
+	padding-right: 0.5rem;
+	background-color: transparent;
+	margin: 0;
+	max-width: none;
+	display: flex;
+	flex-direction: row;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	text-shadow: none;
+	cursor: pointer;
+	border-radius: 0px;
+}
+
+.navLabel:focus, .hamburgerLabel:focus {
+	outline: none;
+}
+
+.navItem .linkIcon {
 	margin: -10px 0;
+	color: white;
+	padding-right: 0.5rem;
 }
 
 .hamburgerWrapper {
@@ -1106,15 +1131,27 @@ aside img {
 	display: block;
 }
 
+.hamburgerWrapper.hide {
+	width: 0px;
+	min-width: 0px;
+	overflow: hidden;
+	margin-left: -20px;
+}
+
 .hamburgerButton:hover {
 	/* To override earlier style */
 	background-color: var(--header);
 	color: white;
 }
 
+.hamburgerChildItems {
+	width: 100%;
+}
+
 .hamburgerItem {
 	margin-right: 0;
 	width: 280px;
+	align-items: flex-end;
 }
 
 .linkIcon {
@@ -1126,16 +1163,13 @@ aside img {
 	display: none;
 }
 
-.hamburger.mobile>li[data-children="true"] {
-	display: grid;
-	grid-template-columns: auto auto;
-	grid-template-rows: auto auto;
-	grid-template-areas: "icon link" "sublinks sublinks";
-	justify-self: stretch;
+.hamburgerItem[data-children="true"] {
+	display: flex;
+	flex-direction: column;
 }
 
-.hamburger.mobile .hamburgerChildLink {
-	grid-area: link;
+.hamburgerChildLink {
+	background-color: var(--header);
 }
 
 .hamburger.mobile li > .linkIcon {
@@ -1163,7 +1197,7 @@ aside img {
 	transition: transform 150ms;
 }
 
-.hamburger.mobile .hamburgerChildItems {
+.hamburger .hamburgerChildItems {
 	position: relative;
 	opacity: 1;
 	color: white;
@@ -1185,19 +1219,34 @@ aside img {
 
 
 /* Hover Control */
-
+/* 
 .navigation li:hover {
-	background-color: var(--primary);
+	background-color: var(--secondary);
+} */
+
+.navItem:hover {
+	background-color:var(--secondary);
+	color: white;
+}
+
+.navItem.open {
+	background-color:var(--secondary);
+	color: white;
+}
+
+/*
+.navItem.show:hover {
+	background-color: none;
 }
 
 .navigation li:hover > a {
 	color: white;
-}
+} */
 
-.navigation a:hover {
+/* .navigation :is(.navLink, .hamburgerLink):hover {
 	background-color: var(--secondary);
 	color: white;
-}
+} */
 
 .hamburger.mobile .hamburgerChildLink:hover {
 	background-color: var(--secondary);

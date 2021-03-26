@@ -3,9 +3,10 @@ import {HamburgerNavLink, TopNavLink} from './Link';
 class NavMenu {
     node; // HTMLElement
     links = []; // Array<Link>
-
-    constructor(menu) {
+    labelMappings = {};
+    constructor(menu, labelMappings = {}) {
         this.node = menu;
+        this.labelMappings = labelMappings;
         this.hideAll = this.hideAll.bind(this)
         this.showAll = this.showAll.bind(this)
     }
@@ -47,6 +48,8 @@ export class Hamburger extends NavMenu {
             this.links = [...this.links, newLink];
         }
 
+        this.addEventListeners();
+
         this.show = this.show.bind(this)
         this.hide = this.hide.bind(this)
         this.toMobile = this.toMobile.bind(this)
@@ -62,6 +65,10 @@ export class Hamburger extends NavMenu {
     // Public Null
     hide() {
         this.node.classList.add("hide");
+        setTimeout(() => {
+            this.closeAllMenus();
+        }, 150);
+            
     }
 
     // Public Null
@@ -100,6 +107,35 @@ export class Hamburger extends NavMenu {
             }
         }
     }
+
+    handleLinks(link) {
+        console.log(link.isMenuOpen)
+        if (!link.isMenuOpen) {
+            this.closeAllMenus();
+            link.open();
+        } else {
+            link.close();
+        }
+    }
+    
+    addEventListeners() {
+        this.links.forEach(link => {
+            if (link.hasChildren) {
+                link.node.addEventListener("click", () => {
+                    console.log("click");
+                    this.handleLinks(link);
+                })
+            }
+        })
+    }
+
+    closeAllMenus() {
+        this.links.forEach(link => {
+            link.close();
+        })
+    }
+
+
 }
 
 export class TopNav extends NavMenu {
@@ -113,15 +149,17 @@ export class TopNav extends NavMenu {
         return width;
     }
 
-    constructor(menu) {
-        super(menu)
+    constructor(menu, labelMappings = {}) {
+        super(menu, labelMappings)
         for (let i = 0; i < this.node.children.length; i++) {
             const link = this.node.children[i];
-            let newLink = new TopNavLink(link);
+            let newLink = new TopNavLink(link, this.labelMappings, this.closeAllMenus);
             this.links = [...this.links, newLink];
         }
 
         this.hideOne = this.hideOne.bind(this);
+        this.closeAllMenus = this.closeAllMenus.bind(this);
+        this.addEventListeners();
 
     }
 
@@ -134,5 +172,30 @@ export class TopNav extends NavMenu {
                 break;
             }
         }
+    }
+
+    handleLinks(link) {
+        if (link.childLinksNode.classList.contains("hide")) {
+            this.closeAllMenus();
+            link.open();
+        } else {
+            link.close();
+        }
+    }
+    
+    addEventListeners() {
+        this.links.forEach(link => {
+            if (link.hasChildren) {
+                link.node.addEventListener("click", () => {
+                    this.handleLinks(link);
+                })
+            }
+        })
+    }
+
+    closeAllMenus() {
+        this.links.forEach(link => {
+            link.close();
+        })
     }
 }

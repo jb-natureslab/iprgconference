@@ -6,8 +6,9 @@ export default class Navigation {
     hamburger; // Hamburger
     hamburgerButton; // HTMLElement
     hamburgerWrapper; // HTMLElement
+    labelMappings; // Object
 
-    constructor(nav) {
+    constructor(nav, labelMapping = {}) {
         // HTMLElement nav
         this.getNavItems = this.getNavItems.bind(this);
         this.handleResize = this.handleResize.bind(this)
@@ -18,6 +19,7 @@ export default class Navigation {
         this.handleMouseOverHamburger = this.handleMouseOverHamburger.bind(this)
         this.addEventListeners = this.addEventListeners.bind(this);
 
+        this.labelMappings = labelMapping;
         this.fullNav = nav;
         this.getNavItems();
         this.addEventListeners();
@@ -30,7 +32,7 @@ export default class Navigation {
             // child is HTMLElement
 
             if (child.classList.contains("topNav")) {
-                this.topNav = new TopNav(child);
+                this.topNav = new TopNav(child, this.labelMappings);
             } else if (child.classList.contains("hamburgerWrapper")) {
                 this.hamburgerWrapper = child;
             }
@@ -61,7 +63,7 @@ export default class Navigation {
         // for mobile
         if (document.documentElement.clientWidth <= 768) {
             this.moveAllToHamburger();
-            this.hamburger.toMobile();
+            // this.hamburger.toMobile();
         }
         // for desktop
         else {
@@ -81,13 +83,14 @@ export default class Navigation {
     
     // Private Null
     moveAllToNav() {
+        this.hamburgerWrapper.classList.add("hide");
         this.hamburger.hideAll();
         this.topNav.showAll();
     }
 
     // Private Null
     moveOneToHamburger() {
-        this.hamburgerButton.classList.remove("hide");
+        this.hamburgerWrapper.classList.remove("hide");
         this.topNav.hideOne();
         this.hamburger.showOne();
     }
@@ -157,12 +160,12 @@ export default class Navigation {
     }
 
     // Private Null
-    handleHamburgerButton(hamburger) {
+    handleHamburgerButton() {
         // Hamburger hamburger
-        if (hamburger.isHidden) {
-            hamburger.show();
+        if (this.hamburger.isHidden) {
+            this.hamburger.show();
         } else {
-            hamburger.hide();
+            this.hamburger.hide();
         }
     }
 
@@ -178,31 +181,33 @@ export default class Navigation {
         }
     }
 
+    getParents(elem) {
+        if (elem.tagName == "HTML") {
+            return [elem];
+        }
+        return [elem.parentElement, ...this.getParents(elem.parentElement)]
+    }
+
+    hasParent(elem, parentElement) {
+        let parents = this.getParents(elem);
+        for (let i = 0; i < parents.length; i++) {
+            const parent = parents[i];
+            if (parent == parentElement) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Private Null
-    handlePageClick(e, hamburger) {
-        // Hamburger hamburger
-        const getParents = (elem) => {
-            if (elem.tagName == "HTML") {
-                return [elem];
-            }
-            return [elem.parentElement, ...getParents(elem.parentElement)]
-        }
-        
-        const hasParent = (elem, parentClass) => {
-            let parents = getParents(elem);
-            for (let i = 0; i < parents.length; i++) {
-                const parent = parents[i];
-                if (parent.classList.contains(parentClass)) {
-                    return true;
-                }
-            }
-            return false;
+    handlePageClick(e) {
+        if (!this.hasParent(e.target, this.hamburgerWrapper)) {
+            this.hamburger.hide();
         }
 
-        if (!hasParent(e.target, "hamburgerWrapper")) {
-            hamburger.hide();
+        if (!this.hasParent(e.target, this.topNav.node)) {
+            this.topNav.closeAllMenus();
         }
-
     }
 
     // Private Null
@@ -213,37 +218,36 @@ export default class Navigation {
     // Private Null
     addEventListeners() {
         this.hamburger.links.forEach(link => {
-            link.node.addEventListener("mouseover", () => {
-                this.handleMouseOverHamburger(link);
-            })
+            // link.node.addEventListener("click", () => {
+            //     this.handleMouseOverHamburger(link);
+            // })
 
-            link.node.addEventListener("mouseleave", () => {
-                this.handleMouseLeaveHamburger(link);
-            })
-            if (link.hasChildren) {
-                link.mobileIcon.node.addEventListener("click", () => {
-                    this.handleExpandSubMenuButton(link);
-                })
-            }
+            // link.node.addEventListener("mouseleave", () => {
+            //     this.handleMouseLeaveHamburger(link);
+            // })
+            // if (link.hasChildren) {
+            //     link.mobileIcon.node.addEventListener("click", () => {
+            //         this.handleExpandSubMenuButton(link);
+            //     })
+            // }
         });
 
-        this.topNav.links.forEach(link => {
-            link.node.addEventListener("mouseover", () => {
-                this.handleMouseOverNav(link)
-                
-            })
+        // this.topNav.links.forEach(link => {
+        //     link.node.addEventListener("click", () => {
+        //         this.handleMouseOverNav(link)
+        //     })
 
-            link.node.addEventListener("mouseleave", () => {
-                this.handleMouseLeaveNav(link)
-            })
-        })
+            // link.node.addEventListener("mouseleave", () => {
+            //     this.handleMouseLeaveNav(link)
+            // })
+        // })
 
         this.hamburgerButton.addEventListener("click", (e) => {
             this.handleHamburgerButton(this.hamburger);
         })
 
         window.addEventListener("click", (e) => {
-            this.handlePageClick(e, this.hamburger);
+            this.handlePageClick(e);
         })
     }
 }
