@@ -47,7 +47,7 @@
 				</div>';
 	}
 	?>
-	<header>
+	<header class="dark">
 		<div class="restrict">
 			<p class="logo"><a href="/"><?php perch_content('Logo'); ?></a></p>
 			<nav class="navigation">
