@@ -47,15 +47,18 @@
 
 	<perch:block type="text_logos" label="Text Field With Logos">
 		<div class="wrap">
-			<div class="restrict text-logo-wrapper">
-				<div class="text-logo-content">
+			<div class="restrict c-text-logo">
+				<div class="c-text-logo__content">
 					<perch:content type="textarea" id="textarea" label="Text Field" editor="redactor" imagewidth="725"
 					html />
 				</div>
-				<div class="text-logo-image">
+				<div class="c-text-logo__logo-wrapper">
 					<perch:repeater id="repeater" label="Repeater">
 						<a href="<perch:content id="link" type="text" label="Icon Link Url">">
-							<img src="<perch:content type="image" label="Speaker Picture" id="speaker-image" height="160" crop="true" filter="imgix" imgix-opts="auto=format,compress" />" />
+							<img 
+								src="<perch:content type="image" label="Speaker Picture" id="speaker-image" height="160" crop="true" filter="imgix" imgix-opts="auto=format,compress" />" 
+								class="c-text-logo__logo <perch:content type="select" id="size" label="Logo Size" options="Normal, Large">"
+							/>
 						</a>
 					</perch:repeater>
 				</div>
