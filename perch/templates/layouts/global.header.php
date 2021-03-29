@@ -42,7 +42,7 @@
 	if (!$isTicketPage) {
 		echo '<div class="alert-bar">
 				<div class="restrict">
-					<h4><a href="/tickets">Click here to book tickets for the conference.</a></h4>
+					<h4><a href="/registration">Click here to register for the conference.</a></h4>
 				</div>
 				</div>';
 	}
