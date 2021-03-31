@@ -6,40 +6,153 @@
 ?>
 
 <div class="wrap">
-	<div class="restrict narrow">
-		<button id="checkout-button">Buy a Ticket €20</button>
-		<script type="text/javascript">
-		// Create an instance of the Stripe object with your publishable API key
-		var stripe = Stripe(
-			'pk_live_51ITOTYGc8mzhKHdom6HhbN4JxRmr4R3ndVK2HA8PU1dlD0rHn9Me4Sv9e31Kp0mCFhlxUP6o2a0rO8OiMEB3dz8Q00TdRSH1IZ'
-		);
-		var checkoutButton = document.getElementById('checkout-button');
+	<div class="restrict narrow" id="form">
+		<script src="https://js.stripe.com/v3/"></script>
+		<?php
+			echo '<form id="payment-form">
+				<div class="form-section">
+					<div class="form-input">
+						<label>Title</label>
+						<select name="title" id="title">
+							<option value="Mr">Mr</option>
+							<option value="Miss">Miss</option>
+							<option value="Mrs">Mrs</option>
+							<option value="Ms">Ms</option>
+							<option value="Dr">Dr</option>
+							<option value="Professor">Professor</option>
+							<option value="">None</option>
+						</select>
+					</div>
+					<div class="form-input">
+						<label>First Name</label>
+						<input type="text" name="firstname" id="firstname" />
+					</div>
+					<div class="form-input">
+						<label>Last Name</label>
+						<input type="text" name="lastname" id="lastname" />
+					</div>
+					<div class="form-input">
+						<label>Organisation</label>
+						<input type="text" name="organisation" id="organisations" />
+					</div>
+					<div class="form-input">
+						<label>Email Address</label>
+						<input type="text" name="emailaddress" id="emailaddress" />
+					</div>
+					<div class="form-input">
+						<label>Telephone</label>
+						<input type="text" name="telephone" id="telephone" />
+					</div>
+					<div class="form-input">
+						<label>Card Details</label>
+						<div id="card-element">
+							<!-- Elements will create input elements here -->
+						</div>
+						<!-- We\'ll put the error messages in this element -->
+						<div id="card-errors" role="alert"></div>
+					</div>
+					<div class="form-input">
+						<button id="submit">Pay</button>
+					</div>
+				</div>
+			</form>';
+			$stripeValue = 2000;
+			echo '
+			<script>
+			var response = fetch("/token.php?value='.$stripeValue.'").then(function(response) {
+			  return response.json();
+			}).then(function(responseJson) {
+			  var clientSecret = responseJson.client_secret;
+			  console.log(clientSecret);
+			  // Call stripe.confirmCardPayment() with the client secret.
+			
+			var stripe = Stripe(\'pk_test_51ITOTYGc8mzhKHdojEFogvwvSrtamy4fB7RakerixL3wxfxioLoR5GG3f3NaJf26YjJW6fM3QmzQMingLh2e58iH00mYJqu1UQ\');
+			var elements = stripe.elements();
+			
+			var elements = stripe.elements();
+			var style = {
+			  base: {
+			    color: "#000",
+			  }
+			};
+			
+			var card = elements.create("card", { 
+				hidePostalCode: true, 
+				style: { 
+					base: {
+					  lineHeight: \'40px\',
+					  fontWeight: 300,
+					  fontSize: \'15px\',
+					  \'::placeholder\': {
+					    color: \'#222\',
+					   }, 
+					}
+				}
+			});
+			card.mount("#card-element");
+			
+			card.on("change", ({error}) => {
+			  let displayError = document.getElementById("card-errors");
+			  if (error) {
+			    displayError.textContent = error.message;
+			  } else {
+			    displayError.textContent = "";
+			  }
+			});
+			
+			var form = document.getElementById(\'payment-form\');
 
-	      checkoutButton.addEventListener('click', function() {
-	        // Create a new Checkout Session using the server-side endpoint you
-	        // created in step 3.
-	        fetch('/create-checkout-session', {
-	          method: 'POST',
-	        })
-	        .then(function(response) {
-	          return response.json();
-	        })
-	        .then(function(session) {
-	          return stripe.redirectToCheckout({ sessionId: session.id });
-	        })
-	        .then(function(result) {
-	          // If `redirectToCheckout` fails due to a browser or network
-	          // error, you should display the localized error message to your
-	          // customer using `error.message`.
-	          if (result.error) {
-	            alert(result.error.message);
-	          }
-	        })
-	        .catch(function(error) {
-	          console.error('Error:', error);
-	        });
-	      });
-	    </script>
+			form.addEventListener(\'submit\', function(ev) {
+				
+			  ev.preventDefault();
+			  
+			  $(\'#payment-form button\').prop("disabled", true);
+			  $(\'#payment-form button\').hide();
+			  var title = $(\'#title\').val();
+			  var firstname = $(\'#firstname\').val();
+			  var lastname = $(\'#lastname\').val();
+			  var organisation = $(\'#organisation\').val();
+			  var emailaddress = $(\'#emailaddress\').val();
+			  var telephone = $(\'#telephone\').val();
+			  
+			  if(firstname==\'\' || lastname==\'\' || emailaddress==\'\' || telephone==\'\'){
+				  alert(\'Please complete all the required fields\');
+				  $(\'#payment-form button\').prop("disabled", false);
+				  $(\'#payment-form button\').show();
+			  }else{
+				  
+				  stripe.confirmCardPayment(clientSecret, {
+				    payment_method: {
+				      card: card,
+				      billing_details: {
+				        name: title+\' \'+firstname+\' \'+lastname+\',
+				        email: emailaddress,
+				        phone: telephone,
+				        address: {
+					      line1: organisation
+					    }
+				      }
+				    }
+				  }).then(function(result) {
+				    if (result.error) {
+				      // Show error to your customer (e.g., insufficient funds)
+				      $(\'#payment-form button\').prop("disabled", false);
+				      $(\'#payment-form button\').show();
+				    } else {
+				      // The payment has been processed!
+				      if (result.paymentIntent.status === \'succeeded\') {
+				        // Show a success message to your customer
+				        $(\'#payment-form\").hide();
+				        $(\'#form\').append(\'<h2>Payment Complete<h2><p>We look forward to seeing you at the conference.</p>\');
+				      }
+				    }
+				  });
+			  
+			  }
+			});
+			});
+			</script>';
+		?>
 	</div>
 </div>
 
