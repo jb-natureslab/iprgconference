@@ -17,3 +17,4 @@ perch/*
 !package.json
 !package-lock.json
 !webpack.config.js
+!stripe-php-7.62.0
