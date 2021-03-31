@@ -32,7 +32,7 @@
 					</div>
 					<div class="form-input">
 						<label>Organisation</label>
-						<input type="text" name="organisation" id="organisations" />
+						<input type="text" name="organisation" id="organisation" />
 					</div>
 					<div class="form-input">
 						<label>Email Address</label>
