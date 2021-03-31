@@ -7,7 +7,6 @@
 
 <div class="wrap">
 	<div class="restrict narrow" id="form">
-		<script src="https://js.stripe.com/v3/"></script>
 		<?php
 			echo '<form id="payment-form">
 				<div class="form-section">
