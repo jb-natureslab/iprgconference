@@ -1824,3 +1824,9 @@ form {
 	text-decoration: underline;
 	border: none;
 }
+
+#card-element{
+	width:100%;
+	padding:0.5rem;
+	background:#eee;
+}
