@@ -523,6 +523,14 @@ footer ul.social li span {
 	.hero>div>img {
 		max-width: 70px;
 	}
+
+	.hero-content h1 {
+		font-size: 3.5rem;
+	}
+
+	.hero-content p {
+		font-size: 1.4rem;
+	}
 }
 
 @media screen and (max-width:480px) {
@@ -573,6 +581,7 @@ footer ul.social li span {
 .card {
 	position: relative;
 	box-shadow: 0px 0px 20px #ccc;
+	overflow: hidden;
 }
 
 .card .thumb {}
@@ -585,8 +594,7 @@ footer ul.social li span {
 .card .content {
 	position: absolute;
 	bottom: 2rem;
-	left: 2rem;
-	width: calc(100% - 4rem);
+	left: -1rem;
 }
 
 .card p {
@@ -594,15 +602,22 @@ footer ul.social li span {
 	font-weight: 700;
 	color: #fff;
 	font-size: 1.4rem;
-	width: 100%;
 	text-shadow: 0px 0px 2px #333;
 }
 
-.card p span {
-	background: var(--bright);
-	padding: 0.2rem 0.6rem;
+.card .card__link {
+	background: var(--header-dark-bg);
+	padding: 0.2rem 1rem;
+	padding-left: 2rem;
 	border-radius: 3px;
-	float: right;
+	text-decoration: none;
+	transition: transform 150ms;
+	transform: translateX(0);
+	display: block;
+}
+
+.card:hover .card__link {
+	transform: translateX(1rem);
 }
 
 .card p a {
@@ -1661,21 +1676,23 @@ form {
 .c-text-logo__logo-wrapper {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(1fr, 240px));
-	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-rows: auto auto auto;
 	gap: 20px;
 	align-items: center;
 	justify-items: right;
 }
 
 .c-text-logo__logo {
+	/* width: 240px; */
 	max-width: 240px;
 }
 
 .c-text-logo__logo.Large {
+	/* width: 300px; */
 	max-width: 300px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 860px) {
 	.text-logo-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -1692,6 +1709,17 @@ form {
 		width: 100%;
 		gap: 20px;
 		flex-wrap: wrap;
+	}
+	.c-text-logo__logo {
+		/* width: 240px; */
+		max-width: none;
+		width: 100%;
+	}
+
+	.c-text-logo__logo.Large {
+		/* width: 240px; */
+		max-width: 240px;
+		width: 100%;
 	}
 }
 
