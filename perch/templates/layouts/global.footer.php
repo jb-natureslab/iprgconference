@@ -40,7 +40,6 @@
 	  })();
 	</script>
 	<!-- End Matomo Code -->
-<?php PerchUtil::output_debug(); ?>
 </body>
 
 </html>
