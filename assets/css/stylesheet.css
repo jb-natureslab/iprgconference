@@ -1817,13 +1817,14 @@ form {
 
 .c-back .c-back__button {
 	background: transparent;
-	color: #0101a1;
+	color: var(--primary);
 	padding: 0;
 	width: auto;
 	margin-bottom: -10px;
 	text-decoration: underline;
 	border: none;
 	text-shadow: none;
+	cursor: pointer;
 }
 
 #card-element{
