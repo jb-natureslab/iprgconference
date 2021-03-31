@@ -141,7 +141,7 @@
 				      // The payment has been processed!
 				      if (result.paymentIntent.status === \'succeeded\') {
 				        // Show a success message to your customer
-				        $(\'#payment-form\").hide();
+				        $(\'#payment-form\').hide();
 				        $(\'#form\').append(\'<h2>Payment Complete<h2><p>We look forward to seeing you at the conference.</p>\');
 				      }
 				    }
