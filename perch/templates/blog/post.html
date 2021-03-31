@@ -1,14 +1,11 @@
 <perch:blog id="postTitle" label="Title" type="text" suppress="true">
 <article class="c-post__post">
-    <div class="c-back">
-        <button class="c-back__button">&#60; Back</button>
-    </div>
 	<div class="c-post__meta">
         <perch:if exists="image">
             <img class="c-post__author-image" src="<perch:blog id="image" type="image" width="100" height="100" crop="true" label="Image" order="4" />" alt="<perch:blog id="postTitle" />" />
         </perch:if>
         <perch:if exists="authorGivenName">
-            <p class="c-post__details">by <perch:blog id="authorGivenName" type="hidden" /> <perch:blog id="authorFamilyName" type="hidden" />,</perch:if>
+            <p class="c-post__details">by <perch:blog id="authorGivenName" type="hidden" /> <perch:blog id="authorFamilyName" type="hidden" />,
         </perch:if>    
         <time class="dt-published" datetime="<perch:blog id="postDateTime" type="date" label="Date" time="true" format="Y-m-d H:i:s" divider-before="Publishing" />">
             <perch:blog id="postDateTime" type="date" time="true" format="%d %B %Y" /> 

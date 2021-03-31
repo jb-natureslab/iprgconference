@@ -8,6 +8,12 @@ perch_layout('global.header');
         <div class="restrict narrow c-post">
             <?php
             if (perch_get("s")) {
+                echo '<div class="c-back">
+                            <button class="c-back__button">&#60; Back</button>
+                        </div>';
+                echo "<h2>";
+                perch_blog_post_field(perch_get("s"), 'postTitle');
+                echo "</h2>";
                 perch_blog_post(perch_get("s"));
             } else {
                 echo '<h2 class="c-post__section-title">Recent Posts:</h2>';
