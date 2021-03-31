@@ -1825,3 +1825,9 @@ form {
 	border: none;
 	text-shadow: none;
 }
+
+#card-element{
+	width:100%;
+	padding:0.5rem;
+	background:#eee;
+}
