@@ -1,0 +1,35 @@
+<perch:before>
+    <ul class="c-post__post-list">    
+</perch:before>
+        <li class="c-post-list__post-in-list">
+            <h2><a href="<perch:blog id="postURL" />" rel="bookmark" class="entry-title"><perch:blog id="postTitle" /></a></h2>
+            <div class="c-post__meta">
+                <perch:if exists="image">
+                    <img class="c-post__author-image" src="<perch:blog id="image" type="image" width="100" height="100" crop="true" label="Image" order="4" />" alt="<perch:blog id="postTitle" />" />
+                </perch:if>
+                <perch:if exists="authorGivenName">
+                    <p class="c-post__details">by <perch:blog id="authorGivenName" type="hidden" /> <perch:blog id="authorFamilyName" type="hidden" />,
+                </perch:if>    
+                <time class="dt-published" datetime="<perch:blog id="postDateTime" type="date" label="Date" time="true" format="Y-m-d H:i:s" divider-before="Publishing" />">
+                    <perch:blog id="postDateTime" type="date" time="true" format="%d %B %Y" /> 
+                </time>
+                </p>
+            </div>
+            <div class="description entry-summary">
+            <perch:blog id="excerpt" type="textarea" textile="true" />
+        </li>
+<perch:after>
+    </ul>
+    <perch:if exists="paging">
+        <div class="c-post__paging">
+            Page <perch:blog id="current_page" /> of <perch:blog id="number_of_pages" />
+            <perch:blog id="page_links" encode="false" />
+            <perch:if exists="not_first_page">
+                <a href="<perch:blog id="prev_url" encode="false" />">Previous</a>
+            </perch:if>
+            <perch:if exists="not_last_page">
+                <a href="<perch:blog id="next_url" encode="false" />">Next</a>
+            </perch:if>
+        </div>
+    </perch:if>
+</perch:after>
