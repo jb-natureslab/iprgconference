@@ -124,7 +124,7 @@
 				    payment_method: {
 				      card: card,
 				      billing_details: {
-				        name: title+\' \'+firstname+\' \'+lastname+\',
+				        name: title+\' \'+firstname+\' \'+lastname,
 				        email: emailaddress,
 				        phone: telephone,
 				        address: {
