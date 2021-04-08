@@ -1054,15 +1054,10 @@ aside img {
 }
 
 .dark .hamburgerButton:hover {
-	background-color: var(--header-dark-bg);
+	background-color: var(--secondary);
 }
 
 .dark .hamburgerButton {
-	background-color: var(--header-dark-bg);
-	color: var(--header-dark-text);
-}
-
-.dark .hamburgerButton:hover {
 	background-color: var(--header-dark-bg);
 	color: var(--header-dark-text);
 }
@@ -1075,7 +1070,6 @@ aside img {
 	justify-content: flex-end;
 	align-items: center;
 	opacity: 0;
-	gap: 20px;
 	z-index: 10;
 }
 
@@ -1189,7 +1183,6 @@ aside img {
 	flex-direction: column;
 	text-align: right;
 	right: 0px;
-	top: 35px;
 	opacity: 1;
 	pointer-events: auto;
 	transition: 150ms;
@@ -1207,9 +1200,14 @@ aside img {
 	cursor: pointer;
 	text-shadow: none;
 	margin: 0px;
-	padding: 0px;
+	padding: 0.7rem 1rem;
 	min-width: 17px;
-	display: block;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	font-family: 'Open Sans', sans-serif;
+	border-radius: 0px;
+	line-height: normal;
 }
 
 .hamburgerWrapper.hide {
@@ -1278,25 +1276,6 @@ aside img {
 }
 
 /* Hover Control */
-
-/* 
-.navigation li:hover {
-	background-color: var(--secondary);
-} */
-
-/*
-.navItem.show:hover {
-	background-color: none;
-}
-
-.navigation li:hover > a {
-	color: white;
-} */
-
-/* .navigation :is(.navLink, .hamburgerLink):hover {
-	background-color: var(--secondary);
-	color: white;
-} */
 
 .hamburger.mobile .hamburgerChildLink:hover {
 	background-color: var(--secondary);

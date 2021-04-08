@@ -69,8 +69,13 @@ export default class Navigation {
         else {
             this.moveAllToNav();
             this.hamburger.toDesktop();
+            let first = true;
             while (this.isNavWrapped()) {
                 this.moveOneToHamburger();
+                if (first) {
+                    this.moveOneToHamburger();
+                    first = false;
+                }
             }
         }
     }
