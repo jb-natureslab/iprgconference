@@ -63,12 +63,15 @@ export default class Navigation {
         // for mobile
         if (document.documentElement.clientWidth <= 768) {
             this.moveAllToHamburger();
+            this.hamburgerButton.getElementsByTagName("p")[0].innerHTML = "Menu";
+
             // this.hamburger.toMobile();
         }
         // for desktop
         else {
             this.moveAllToNav();
             this.hamburger.toDesktop();
+            this.hamburgerButton.getElementsByTagName("p")[0].innerHTML = "More";
             let first = true;
             while (this.isNavWrapped()) {
                 this.moveOneToHamburger();
@@ -107,7 +110,9 @@ export default class Navigation {
         let linksWidth = this.topNav.totalWidth;
 
         // 50 is icon width, refactor later to use actual icon width
-        if (linksWidth > navWidth - 50) {
+        let hamburgerButtonRect = this.hamburgerButton.getBoundingClientRect()
+        let hamburgerButtonWidth = hamburgerButtonRect.right - hamburgerButtonRect.left;
+        if (linksWidth > navWidth - hamburgerButtonWidth) {
             return true;
         }
         return false;

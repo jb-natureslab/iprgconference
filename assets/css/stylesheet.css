@@ -1057,8 +1057,13 @@ aside img {
 	background-color: var(--secondary);
 }
 
+
 .dark .hamburgerButton {
 	background-color: var(--header-dark-bg);
+	color: var(--header-dark-text);
+}
+
+.dark .hamburgerButton p {
 	color: var(--header-dark-text);
 }
 
@@ -1166,7 +1171,7 @@ aside img {
 	outline: none;
 }
 
-.navItem .linkIcon {
+.linkIcon {
 	margin: -10px 0;
 	padding-right: 0.5rem;
 }
@@ -1196,7 +1201,6 @@ aside img {
 
 .hamburgerButton {
 	position: relative;
-	top: 1px;
 	cursor: pointer;
 	text-shadow: none;
 	margin: 0px;
@@ -1209,6 +1213,7 @@ aside img {
 	border-radius: 0px;
 	line-height: normal;
 }
+
 
 .hamburgerWrapper.hide {
 	width: 0px;

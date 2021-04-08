@@ -58,8 +58,8 @@
 				?>
 				<div class="hamburgerWrapper">
 					<button class="hamburgerButton">
-						More
-						<i class="fas fa-chevron-down"></i>
+						<p>More</p>
+						<i class="fas fa-angle-down linkIcon"></i>
 					</button>
 					<?php
 					perch_pages_navigation(array(
