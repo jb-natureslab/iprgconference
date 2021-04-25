@@ -114,6 +114,8 @@
 			  var emailaddress = $(\'#emailaddress\').val();
 			  var telephone = $(\'#telephone\').val();
 			  
+			  var emailaddress = emailaddress.trim();
+			  
 			  if(firstname==\'\' || lastname==\'\' || emailaddress==\'\' || telephone==\'\'){
 				  alert(\'Please complete all the required fields\');
 				  $(\'#payment-form button\').prop("disabled", false);
