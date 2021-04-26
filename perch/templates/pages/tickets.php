@@ -144,8 +144,10 @@
 				      if (result.paymentIntent.status === \'succeeded\') {
 				        // Show a success message to your customer
 				        $(\'#payment-form\').hide();
-				        $.post("/conference_registration.php", { pTitle: title, pFirstname: firstname, pLastname: lastname, pEmail: emailaddress, pPhone: telephone, pOrganisation: organisation } );
-				        window.location.replace("/tickets/complete/");
+				        $.post("/conference_registration.php", { pTitle: title, pFirstname: firstname, pLastname: lastname, pEmail: emailaddress, pPhone: telephone, pOrganisation: organisation }, function(){
+					    window.location.replace("/tickets/complete/");    
+					        });
+				        
 				      }
 				    }
 				  });
