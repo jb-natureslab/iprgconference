@@ -65,7 +65,7 @@
 			  console.log(clientSecret);
 			  // Call stripe.confirmCardPayment() with the client secret.
 			
-			var stripe = Stripe(\'pk_live_51ITOTYGc8mzhKHdom6HhbN4JxRmr4R3ndVK2HA8PU1dlD0rHn9Me4Sv9e31Kp0mCFhlxUP6o2a0rO8OiMEB3dz8Q00TdRSH1IZ\');
+			var stripe = Stripe(\'pk_test_51ITOTYGc8mzhKHdojEFogvwvSrtamy4fB7RakerixL3wxfxioLoR5GG3f3NaJf26YjJW6fM3QmzQMingLh2e58iH00mYJqu1UQ\');
 			var elements = stripe.elements();
 			
 			var elements = stripe.elements();
