@@ -145,7 +145,7 @@
 				        // Show a success message to your customer
 				        $(\'#payment-form\').hide();
 				        $.post("/conference_registration.php", { pTitle: title, pFirstname: firstname, pLastname: lastname, pEmail: emailaddress, pPhone: telephone, pOrganisation: organisation } );
-				        $(\'#form\').append(\'<h2>Payment Complete<h2><p>We look forward to seeing you at the conference.</p>\');
+				        window.location.replace("/registration/complete/");
 				      }
 				    }
 				  });
