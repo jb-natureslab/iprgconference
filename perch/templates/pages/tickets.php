@@ -114,6 +114,8 @@
 			  var emailaddress = $(\'#emailaddress\').val();
 			  var telephone = $(\'#telephone\').val();
 			  
+			  var emailaddress = emailaddress.trim();
+			  
 			  if(firstname==\'\' || lastname==\'\' || emailaddress==\'\' || telephone==\'\'){
 				  alert(\'Please complete all the required fields\');
 				  $(\'#payment-form button\').prop("disabled", false);
@@ -141,9 +143,10 @@
 				      // The payment has been processed!
 				      if (result.paymentIntent.status === \'succeeded\') {
 				        // Show a success message to your customer
-				        $(\'#payment-form\').hide();
-				        $.post("/conference_registration.php", { pTitle: title, pFirstname: firstname, pLastname: lastname, pEmail: emailaddress, pPhone: telephone, pOrganisation: organisation } );
-				        $(\'#form\').append(\'<h2>Payment Complete<h2><p>We look forward to seeing you at the conference.</p>\');
+				        $.post("/conference_registration.php", { pTitle: title, pFirstname: firstname, pLastname: lastname, pEmail: emailaddress, pPhone: telephone, pOrganisation: organisation }, function(){
+					    window.location.replace("/tickets/complete/");    
+					        });
+				        
 				      }
 				    }
 				  });
