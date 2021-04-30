@@ -1472,7 +1472,7 @@ form {
 .align-container {
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
+	gap: 4rem;
 	width: 100%;
 }
 
