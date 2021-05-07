@@ -54,10 +54,30 @@
 						<button id="submit">Pay €20.00</button>
 					</div>
 				</div>
-			</form>';
+			</form>
+			<p><strong>Get a Free Ticket</strong></p>
+			<p>If you can\'t afford €20 we are able to offer you a complimentary ticket. Please complete the form above, excluding your card details, then <a href="javascript:complimentaryTicket();">click here</a>.</p>';
 			$stripeValue = 2000;
 			echo '
 			<script>
+			function complimentaryTicket(){
+				var title = $(\'#title\').val();
+				var firstname = $(\'#firstname\').val();
+				var lastname = $(\'#lastname\').val();
+				var organisation = $(\'#organisation\').val();
+				var emailaddress = $(\'#emailaddress\').val();
+				var telephone = $(\'#telephone\').val();
+				
+				var emailaddress = emailaddress.trim();
+				
+				if(firstname==\'\' || lastname==\'\' || emailaddress==\'\' || telephone==\'\'){
+					alert(\'Please complete all the required fields\');
+				}else{
+					$.post("/conference_registration.php", { pTitle: title, pFirstname: firstname, pLastname: lastname, pEmail: emailaddress, pPhone: telephone, pOrganisation: organisation }, function(){
+					    window.location.replace("/tickets/complete/");    
+					});
+				}
+			}
 			var response = fetch("/token.php?value='.$stripeValue.'").then(function(response) {
 			  return response.json();
 			}).then(function(responseJson) {
