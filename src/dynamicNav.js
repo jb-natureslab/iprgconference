@@ -9,7 +9,7 @@ const implementNav = () => {
         navigationArray = [...navigationArray, navigation];
     }
     if (navigationArray) {
-        window.onload = () => {
+        window.addEventListener("DOMContentLoaded", () => {
             navigationArray.forEach(nav => {
                 nav.handleResize()
             })
@@ -18,7 +18,7 @@ const implementNav = () => {
                     nav.show();
                 })
             }, 20)
-        };
+        })
 
         window.addEventListener("resize", () => {
             navigationArray.forEach(nav => {
