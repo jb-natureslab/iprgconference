@@ -8,7 +8,7 @@
 <div class="wrap">
 	<div class="restrict narrow" id="form">
 		<p><strong>Get a Free Ticket</strong></p>
-		<p>If you can't afford €20 we are able to offer you a complimentary ticket. Please complete the form below, excluding your card details, then <a href="javascript:complimentaryTicket();">click here</a>, rather than the button below.</p>
+		<p>If you can't afford €20 we are able to offer you a complimentary ticket. Please complete the form below, excluding your card details, then click 'Get a Free Ticked' below.</p>
 		<?php
 			echo '<form id="payment-form">
 				<div class="form-section">
@@ -53,7 +53,7 @@
 						<div id="card-errors" role="alert"></div>
 					</div>
 					<div class="form-input">
-						<button id="submit">Pay €20.00</button>
+						<button id="submit">Pay €20.00</button> <button onclick=""javascript:complimentaryTicket();">Get a Free Ticket</button>
 					</div>
 				</div>
 			</form>';
