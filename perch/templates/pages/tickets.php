@@ -8,7 +8,7 @@
 <div class="wrap">
 	<div class="restrict narrow" id="form">
 		<p><strong>Get a Free Ticket</strong></p>
-		<p>If you can't afford €20 we are able to offer you a complimentary ticket. Please complete the form below, excluding your card details, then click 'Get a Free Ticked' below.</p>
+		<p>If you can't afford €20 we are able to offer you a complimentary ticket. Please complete the form below, excluding your card details, then click 'Get a Free Ticket' below.</p>
 		<?php
 			echo '<form id="payment-form">
 				<div class="form-section">
