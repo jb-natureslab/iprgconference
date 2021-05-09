@@ -53,7 +53,7 @@
 						<div id="card-errors" role="alert"></div>
 					</div>
 					<div class="form-input">
-						<button id="submit">Pay €20.00</button> <button onclick=""javascript:complimentaryTicket();">Get a Free Ticket</button>
+						<button id="submit">Pay €20.00</button> <button onclick="javascript:complimentaryTicket();">Get a Free Ticket</button>
 					</div>
 				</div>
 			</form>';
