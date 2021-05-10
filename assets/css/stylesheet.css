@@ -1878,3 +1878,12 @@ form {
 .c-timetable__key {
 	opacity: 0.6;
 }
+
+.c-timetable__date {
+	border-bottom: 1px solid rgb(199, 199, 199);
+	margin-top: 2rem;
+}
+
+.c-timetable__date:first-child {
+	margin-top: 0;
+}
