@@ -1825,6 +1825,7 @@ form {
 
 .c-speaker__content p {
 	margin-bottom: 0.6rem;
+	line-height: 1.6rem;
 }
 
 .c-speaker__content h3 {
@@ -1851,4 +1852,29 @@ form {
 .c-speaker img {
 	float: none;
 	margin: 0;
+}
+
+
+.c-timetable {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.c-timetable :is(td, th) {
+	/* border: 1px solid rgb(219, 219, 219); */
+	padding: 0.7rem;
+	text-align: left;
+	font-size: 1.2rem;
+}
+
+.c-timetable :is(td, th):first-child {
+	padding-left: 0;
+}
+
+.c-timetable :is(h3, h4) {
+	margin: 0;
+}
+
+.c-timetable__key {
+	opacity: 0.6;
 }

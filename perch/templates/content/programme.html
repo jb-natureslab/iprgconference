@@ -1,0 +1,49 @@
+<div class="wrap">
+    <div class="restrict">
+        <table class="c-timetable">
+            <perch:blocks>
+                <perch:block label="Date" type="sectionDate">
+                    <tr>
+                        <td colspan="3" class="c-timetable__date">
+                            <h3><perch:content type="text" label="Date" id="date"></h3>
+                        </td>
+                    </tr>
+                </perch:block>
+                <perch:block label="Section Title" type="sectionTitle">
+                    <tr>
+                        <td colspan="3" class="c-timetable__title">
+                            <h3><perch:content type="text" label="Title" id="title"></h3>
+                        </td>
+                    </tr>
+                </perch:block>
+                <perch:block label="Section Subtitle" type="sectionSubTitle">
+                    <tr>
+                        <td colspan="3" class="c-timetable__subtitle">
+                            <h4><perch:content type="text" label="Sub Title" id="subTitle"></h4>
+                        </td>
+                    </tr>
+                </perch:block>
+                <perch:block label="Talk" type="talk">
+                    <tr class="c-timetable__talk">
+                        <td><perch:content id="startTime" type="time" label="Start Time" format="H:i" native="true" ></td>
+                        <td><perch:content id="title" label="Title" type="text"></td>
+                        <td><perch:content id="speaker" label="Speaker" type="text"></td>
+                    </tr>
+                </perch:block>
+                <perch:block label="Break" type="break">
+                    <tr class="c-timetable__break">
+                        <td><perch:content id="text" type="text" label="Break"></td>
+                    </tr>
+                </perch:block>
+                
+                <perch:block label="Key" type="key">
+                    <tr class="c-timetable__key">
+                        <th>Time</th>
+                        <th>Talk</th>
+                        <th>Speaker</th>
+                    </tr>
+                </perch:block>
+            </perch:blocks>
+        </table>
+    </div>
+</div>
