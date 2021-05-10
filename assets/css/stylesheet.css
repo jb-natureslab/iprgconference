@@ -1871,6 +1871,11 @@ form {
 	padding-left: 0;
 }
 
+.c-timetable th {
+	padding-top: 0.3rem;
+	padding-bottom: 0rem;
+}
+
 .c-timetable :is(h3, h4) {
 	margin: 0;
 }
@@ -1879,11 +1884,11 @@ form {
 	opacity: 0.6;
 }
 
-.c-timetable__date {
-	border-bottom: 1px solid rgb(199, 199, 199);
-	margin-top: 2rem;
+.c-timetable__date td {
+	border-bottom: 1px solid rgb(219, 219, 219);
+	padding-top: 2rem;
 }
 
-.c-timetable__date:first-child {
+.c-timetable__date:first-child td {
 	margin-top: 0;
 }
