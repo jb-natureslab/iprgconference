@@ -12,18 +12,11 @@
                 <perch:block label="Section Title" type="sectionTitle">
                     <tr class="c-timetable__title">
                         <td colspan="3">
-                            <h3><perch:content type="text" label="Title" id="title"></h3>
-                        </td>
-                    </tr>
-                </perch:block>
-                <perch:block label="Section Title With Chair" type="sectionTitleWithChair">
-                    <tr class="c-timetable__title">
-                        <td colspan="3">
-                            <h3>
-                                <perch:content type="text" label="Title" id="title">
+                            <h3><perch:content type="text" label="Title" id="title">
+                                <perch:if exists="chair">
                                     <br>
                                 <em style="font-size: 1.6rem; font-weight: 400;">Chairperson <perch:content type="text" label="Chair" id="chair"></em>
-
+                                </perch:if>
                             </h3>
                         </td>
                     </tr>
@@ -44,7 +37,8 @@
                 </perch:block>
                 <perch:block label="Break" type="break">
                     <tr class="c-timetable__break">
-                        <td colspan="3"><perch:content id="text" type="text" label="Break"></td>
+                        <td><perch:content id="startTime" type="time" label="Start Time" format="H:i" native="true" ></td>
+                        <td colspan="2"><perch:content id="text" type="text" label="Break"></td>
                     </tr>
                 </perch:block>
                 
