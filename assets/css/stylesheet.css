@@ -1892,3 +1892,7 @@ form {
 .c-timetable__date:first-child td {
 	margin-top: 0;
 }
+
+.contact-form {
+	margin-top: 2rem;
+}
