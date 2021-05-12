@@ -1838,6 +1838,18 @@ form {
 	gap: 2rem;
 }
 
+.c-speaker__content ul {
+	margin-left: 1rem;
+}
+
+.c-speaker__content li {
+	margin-top: 0.4rem;
+}
+
+.c-speaker__content li:first-child {
+	margin-top: 0;
+}
+
 @media screen and (max-width: 480px) {
 	.c-speaker {
 		grid-template-columns: auto;
