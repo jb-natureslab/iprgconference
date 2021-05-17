@@ -1870,6 +1870,7 @@ form {
 .c-timetable {
 	margin: 0 auto;
 	width: 100%;
+	overflow: auto;
 }
 
 .c-timetable :is(td, th) {
@@ -1903,6 +1904,33 @@ form {
 
 .c-timetable__date:first-child td {
 	margin-top: 0;
+}
+
+.c-timetable__talk-description {
+	max-height: 0;
+	transition: 300ms;
+	overflow: hidden;
+}
+
+.c-timetable__talk-description-text {
+	background-color: rgb(248, 248, 248);
+	padding: 1rem;
+	margin-top: 0.8rem;
+}
+
+.c-timetable__button {
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	color: black;
+	text-shadow: none;
+	color: var(--bright);
+	cursor: pointer;
+}
+
+.c-timetable__button:hover {
+	background-color: transparent;
+	color: var(--bright);
 }
 
 .contact-form {

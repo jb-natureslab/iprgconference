@@ -31,7 +31,23 @@
                 <perch:block label="Talk" type="talk">
                     <tr class="c-timetable__talk">
                         <td><perch:content id="startTime" type="time" label="Start Time" format="H:i" native="true" ></td>
-                        <td><perch:content id="title" label="Title" type="text"></td>
+                        <td>
+                            <div style="display: grid" class="c-timetable__talk-description-wrapper">
+                                <div style="display: flex; justify-content: space-between; gap: 1rem">
+                                    <perch:content id="title" label="Title" type="text"> 
+                                    <perch:if exists="abstract">
+                                        <button class="c-timetable__button" style="display: block;">View Abstract</button>
+                                    </perch:if>
+                                </div>
+                                <perch:if exists="abstract">
+                                    <div class="c-timetable__talk-description">
+                                        <div class="c-timetable__talk-description-text">
+                                            <perch:content type="textarea" label="Abstract" id="abstract">
+                                        </div>
+                                    </div>
+                                </perch:if>
+                            </div>
+                        </td>
                         <td><perch:content id="speaker" label="Speaker" type="text"></td>
                     </tr>
                 </perch:block>
