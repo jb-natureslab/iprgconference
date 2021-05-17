@@ -1872,12 +1872,52 @@ form {
 	margin: 0 auto;
 	width: 100%;
 	overflow: auto;
+	font-size: 1.2rem;
+	display: flex;
+	flex-direction: column;
 }
 
-.c-timetable :is(td, th) {
+.c-timetable__date {
+	margin-bottom: 0.7rem;
+}
+
+.c-timetable__date > h3 {
+	border-bottom: 1px solid rgb(226, 226, 226);
+	padding-bottom: 0.7rem;
+}
+
+.c-timetable__title {
+	margin-bottom: 1.1rem;
+}
+
+.c-timetable__subtitle {
+	margin-bottom: 0.4rem;
+	margin-top: 0.2rem;
+}
+
+:is(.c-timetable__break, .c-timetable__talk) + .c-timetable__date {
+	margin-top: 1rem;
+}
+
+.c-timetable__title, .c-timetable__subtitle, .c-timetable__date, .c-timetable__break {
+	width: 100%;
+}
+
+.c-timetable__break {
+	display: grid;
+	grid-template-columns: 50px auto;
+	gap: 1rem;
+}
+
+.c-timetable__talk, .c-timetable__key {
+	display: grid;
+	grid-template-columns: 50px auto 150px;
+	gap: 1rem;
+	align-items: flex-start;
+}
+
+.c-timetable :is(div) {
 	/* border: 1px solid rgb(219, 219, 219); */
-	padding: 0.7rem;
-	text-align: left;
 	font-size: 1.2rem;
 }
 
@@ -1896,6 +1936,7 @@ form {
 
 .c-timetable__key {
 	opacity: 0.6;
+	width: 100%;
 }
 
 .c-timetable__date td {
@@ -1907,14 +1948,24 @@ form {
 	margin-top: 0;
 }
 
+.c-timetable__talk, .c-timetable__break {
+	width: 100%;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.c-timetable__talk:nth-child(even) {
+}
+
 .c-timetable__talk-description {
 	max-height: 0;
 	transition: 500ms;
 	overflow: hidden;
+	padding: 0;
 }
 
 .c-timetable__talk-description-text {
-	background-color: rgb(248, 248, 248);
+	background-color: rgb(249, 249, 249);
 	padding: 1rem;
 	margin-top: 0.8rem;
 	font-size: 1rem;
@@ -1939,6 +1990,7 @@ form {
 
 .c-timetable__talk-speaker {
 	white-space: nowrap;
+	justify-self: end;
 }
 
 .c-timetable p:last-child {
@@ -1946,12 +1998,67 @@ form {
 }
 
 @media screen and (max-width: 798px) {
+	.c-timetable__key {
+		display: none;
+	}
+
 	.c-timetable__talk-speaker {
+		white-space: pre-wrap;
+		grid-area: speaker;
+		justify-self: start;
+	}
+
+	:is(.c-timetable__key, .c-timetable__subtitle) + .c-timetable__talk::before {
+		opacity: 0;
+	}
+
+	.c-timetable__talk, .c-timetable__break {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+		position: relative;
+	}
+
+	.c-timetable__talk {
+		grid-template-columns: min-content auto;
+		grid-template-rows: auto auto;
+		grid-template-areas: "time speaker"
+							 ". description";
+	}
+
+	:is(.c-timetable__talk, .c-timetable__break)::before {
+		content: "";
+		width: 70%;
+		position: absolute;
+		height: 1px;
+		background-color: rgb(206, 206, 206);
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	:is(.c-timetable__subtitle, .c-timetable__key) + .c-timetable__talk {
+		padding-top: 0.5rem;
+	}
+
+	.c-timetable__talk .c-timetable__time {
+		grid-area: time;
+	}
+
+	.c-timetable__talk-description-wrapper {
+		grid-area: description;
+	}
+}
+
+@media screen and (max-width: 380px) {
+	.c-timetable__button {
 		white-space: pre-wrap;
 	}
 
-	.c-timetable__button {
-		white-space: pre-wrap;
+	.c-timetable__talk {
+		grid-template-columns: min-content auto;
+		grid-template-rows: auto auto;
+		grid-template-areas: "time speaker"
+							 "description description";
 	}
 }
 

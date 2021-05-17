@@ -16,7 +16,7 @@ for (let i = 0; i < backButtons.length; i++) {
 
 
 
-const timetableDescs = Array.from(document.getElementsByClassName("c-timetable__talk"));
+const timetableDescs = Array.from(document.getElementsByClassName("c-timetable__talk-description-wrapper"));
 
 timetableDescs.forEach(t => {
     let button = t.getElementsByClassName("c-timetable__button")[0];
