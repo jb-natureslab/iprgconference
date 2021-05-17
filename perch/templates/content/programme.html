@@ -42,13 +42,13 @@
                                 <perch:if exists="abstract">
                                     <div class="c-timetable__talk-description">
                                         <div class="c-timetable__talk-description-text">
-                                            <perch:content type="textarea" label="Abstract" id="abstract">
+                                            <perch:content type="textarea" editor="redactor" label="Abstract" id="abstract" html>
                                         </div>
                                     </div>
                                 </perch:if>
                             </div>
                         </td>
-                        <td><perch:content id="speaker" label="Speaker" type="text"></td>
+                        <td class="c-timetable__talk-speaker"><perch:content id="speaker" label="Speaker" type="text"></td>
                     </tr>
                 </perch:block>
                 <perch:block label="Break" type="break">
