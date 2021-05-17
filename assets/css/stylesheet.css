@@ -1895,7 +1895,7 @@ form {
 	margin-top: 0.2rem;
 }
 
-:is(.c-timetable__break, .c-timetable__talk) + .c-timetable__date {
+:is(.c-timetable__break, .c-timetable__talk) + :is(.c-timetable__date, .c-timetable__title) {
 	margin-top: 1rem;
 }
 
