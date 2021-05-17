@@ -1941,6 +1941,10 @@ form {
 	white-space: nowrap;
 }
 
+.c-timetable p:last-child {
+	margin: 0;
+}
+
 @media screen and (max-width: 798px) {
 	.c-timetable__talk-speaker {
 		white-space: pre-wrap;
