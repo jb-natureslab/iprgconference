@@ -1990,6 +1990,7 @@ form {
 
 .c-timetable__talk-speaker {
 	justify-self: end;
+	text-align: right;
 }
 
 .c-timetable p:last-child {
