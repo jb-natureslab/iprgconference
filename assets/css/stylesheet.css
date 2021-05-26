@@ -2018,7 +2018,7 @@ form {
 	margin: 0.5rem 0;
 }
 
-.c-timetable__talk-speaker-bio > p {
+.c-timetable__talk-speaker-bio > :is(p, li) {
 	font-size: 1.1rem;
 	line-height: 1.7rem;
 	margin-bottom: 0.5rem;
