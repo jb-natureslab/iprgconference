@@ -1,2 +1,5 @@
 RewriteEngine On
 RewriteRule ^news/([A-Za-z0-9-]+)$ news/index.php$1 [L]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^news/([A-Za-z0-9-]+)$ news/index.php$1 [L]
