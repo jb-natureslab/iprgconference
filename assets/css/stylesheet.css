@@ -1965,9 +1965,8 @@ form {
 }
 
 .c-timetable__talk-description-text {
-	background-color: rgb(249, 249, 249);
-	padding: 1rem;
-	margin-top: 0.8rem;
+	/* background-color: rgb(249, 249, 249); */
+	/* padding: 1rem; */
 	font-size: 1rem;
 }
 
@@ -1995,6 +1994,43 @@ form {
 
 .c-timetable p:last-child {
 	margin: 0;
+}
+
+.c-timetable__talk-speaker-details {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	flex-direction: column;
+	border-right: 1px solid rgb(221, 221, 221);
+	padding-right: 1.5rem;
+}
+
+.c-timetable__talk-speaker-image {
+	width: 150px;
+	height: auto;
+}
+
+.c-timetable__talk-description-background {
+	background: rgb(250, 250, 250);
+	padding: 1rem;
+	display: grid;
+	grid-template-columns: 25% auto;
+	gap: 1.5rem;
+}
+
+@media screen and (max-width: 1050px) {
+	.c-timetable__talk-description-background {
+		grid-template-columns: auto;
+		grid-template-rows: auto auto;
+	}
+
+	.c-timetable__talk-speaker-details {
+		margin-bottom: 0;
+		flex-direction: row;
+		border-right: none;
+		padding-right: 0;
+		align-items: flex-start;
+	}
 }
 
 @media screen and (max-width: 798px) {
@@ -2046,6 +2082,14 @@ form {
 
 	.c-timetable__talk-description-wrapper {
 		grid-area: description;
+	}
+}
+
+@media screen and (max-width: 530px) {
+	.c-timetable__talk-speaker-details {
+		flex-direction: column;
+		border-bottom: 1px solid rgb(221, 221, 221);
+		padding-bottom: 1.5rem;
 	}
 }
 

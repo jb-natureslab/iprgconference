@@ -28,18 +28,31 @@
                         <div style="display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start;">
                             <perch:content id="title" label="Title" type="text"> 
                             <perch:if exists="abstract">
-                                <button class="c-timetable__button" style="display: block;">View Abstract</button>
+                                <button class="c-timetable__button" style="display: block;">View Details</button>
                             </perch:if>
                         </div>
-                        <perch:if exists="abstract">
-                            <div class="c-timetable__talk-description">
+                        <div class="c-timetable__talk-description">
+                            <div class="c-timetable__talk-description-background">
+                                <perch:if exists="speakerBio OR speakerImage">
+                                    <div class="c-timetable__talk-speaker-details">
+                                        <perch:if exists="speakerImage">
+                                            <img class="c-timetable__talk-speaker-image" src="<perch:content id="speakerImage", label="Speaker Image" type="image" width="200">" />
+                                        </perch:if>
+                                        <perch:if exists="speakerBio">
+                                            <div>
+                                                <h4 class="c-timetable__talk-speaker-name"><perch:content id="speaker" label="Speaker" type="text"></h4>
+                                                <div class="c-timetable__talk-speaker-bio"><perch:content id="speakerBio" label="Speaker Bio" type="textarea" editor="redactor" html></div>
+                                            </div>
+                                        </perch:if>
+                                    </div>
+                                </perch:if>
                                 <div class="c-timetable__talk-description-text">
                                     <perch:content type="textarea" editor="redactor" label="Abstract" id="abstract" html>
                                 </div>
                             </div>
-                        </perch:if>
+                        </div>
                     </div>
-                    <div class="c-timetable__talk-speaker"><perch:content id="speaker" label="Speaker" type="text"></div>
+                    <div class="c-timetable__talk-speaker"><perch:content id="speaker"></div>
                 </div>
                 </perch:block>
                 <perch:block label="Break" type="break">
