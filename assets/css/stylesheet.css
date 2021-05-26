@@ -1948,7 +1948,7 @@ form {
 	margin-top: 0;
 }
 
-.c-timetable__talk, .c-timetable__break {
+.c-timetable__talk-wrapper, .c-timetable__break {
 	width: 100%;
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
@@ -2054,7 +2054,7 @@ form {
 		opacity: 0;
 	}
 
-	.c-timetable__talk, .c-timetable__break {
+	.c-timetable__talk-wrapper, .c-timetable__break {
 		padding-top: 2rem;
 		padding-bottom: 2rem;
 		position: relative;
