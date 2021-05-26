@@ -40,7 +40,7 @@
                             <perch:if exists="speakerBio OR speakerImage">
                                 <div class="c-timetable__talk-speaker-details">
                                     <perch:if exists="speakerImage">
-                                        <img class="c-timetable__talk-speaker-image" src="<perch:content id="speakerImage", label="Speaker Image" type="image" width="200">" />
+                                        <img class="c-timetable__talk-speaker-image" src="<perch:content id="speakerImage", label="Speaker Image" type="image" width="200">" alt="<perch:content id="speaker">" />
                                     </perch:if>
                                     <perch:if exists="speakerBio">
                                         <div>
