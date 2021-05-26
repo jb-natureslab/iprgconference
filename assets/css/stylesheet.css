@@ -1999,7 +1999,6 @@ form {
 .c-timetable__talk-speaker-details {
 	display: flex;
 	gap: 1rem;
-	margin-bottom: 1rem;
 	flex-direction: column;
 	border-right: 1px solid rgb(221, 221, 221);
 	padding-right: 1.5rem;
