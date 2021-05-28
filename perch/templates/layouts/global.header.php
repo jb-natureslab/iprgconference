@@ -39,14 +39,12 @@
 			$isTicketPage = true;
 		}
 	}
-	if (!$isTicketPage) {
-		echo '<div class="alert-bar">
-				<div class="restrict">
-					<h4><a href="/registration">Click here to register for the conference.</a></h4>
-				</div>
-				</div>';
-	}
 	?>
+	<div class="alert-bar">
+		<div class="restrict">
+			<h4><a href="https://iprg.info">Visit the main IPRG.info website</a></h4>
+		</div>
+	</div>
 	<header class="dark">
 		<div class="restrict">
 			<p class="logo"><a href="/"><?php perch_content('Logo'); ?></a></p>
