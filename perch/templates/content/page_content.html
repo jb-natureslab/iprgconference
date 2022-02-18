@@ -248,7 +248,7 @@
 	<perch:block type="keynote-speakers" label="Keynote Speakers">
 		<perch:repeater id="container" label="Speakers">
 			<perch:before><div class="align-container"></perch:before>
-			<div class="wrap c-columns align-outer">
+			<div class="wrap <perch:every count="2">left<perch:else>left</perch:every>-align align-outer">
 				<div class="c-speaker restrict <perch:every count="2">left<perch:else>left</perch:every>-align-inner ">
 					<img 
 						src="<perch:content type="image" 
@@ -263,7 +263,6 @@
 						<h2><perch:content type="text" label="Name" id="speakerName"></h2>
 						<div class="c-speaker__content">
 							<div>
-								<h3>Bio</h3>
 								<perch:content type="textarea" id="speakerBio" label="Speaker Bio" editor="redactor" html />
 							</div>
 						</div>
