@@ -1831,6 +1831,10 @@ form {
 	line-height: 1.6rem;
 }
 
+.c-speaker__content img{
+	border-radius: 7px;
+}
+
 .c-speaker__content h3 {
 	margin-bottom: 0.3rem;
 }
@@ -1851,6 +1855,19 @@ form {
 
 .c-speaker__content li:first-child {
 	margin-top: 0;
+}
+
+.c-columns{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 2rem;
+	grid-row-gap:2rem;
+}
+
+@media screen and (max-width:768px){
+	.c-columns{
+		display:block;
+	}
 }
 
 @media screen and (max-width: 480px) {
