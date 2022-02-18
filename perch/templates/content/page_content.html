@@ -250,17 +250,17 @@
 			<perch:before><div class="align-container keynote"></perch:before>
 			<div class="wrap <perch:every count="2">left<perch:else>left</perch:every>-align align-outer">
 				<div class="c-speaker restrict <perch:every count="2">left<perch:else>left</perch:every>-align-inner ">
-					<img 
-						src="<perch:content type="image" 
-						id="image" 
-						label="Image" 
-						width="400" 
-						filter="imgix"
-						imgix-opts="auto=format,compress" />" 
-						alt="<perch:content type="text" label="Image Alt" id="alt" />" 
-						loading="lazy">
 					<div>
 						<h2><perch:content type="text" label="Name" id="speakerName"></h2>
+						<img 
+							src="<perch:content type="image" 
+							id="image" 
+							label="Image" 
+							width="400" 
+							filter="imgix"
+							imgix-opts="auto=format,compress" />" 
+							alt="<perch:content type="text" label="Image Alt" id="alt" />" 
+							loading="lazy">
 						<div class="c-speaker__content">
 							<div>
 								<perch:content type="textarea" id="speakerBio" label="Speaker Bio" editor="redactor" html />
