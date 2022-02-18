@@ -18,6 +18,13 @@
 			<p class="copyright">&copy; 2021</p>
 	    </div>
     </footer>
+    
+    <script>
+	    $(document).ready(function(){
+			$('#video').append('<video autoplay muted loop id="heroVideo" style="display:none"><source src="/assets/bees.mp4" type="video/mp4"></video>');
+			$('#heroVideo').fadeIn('slow');
+		});
+	</script>
 
 	<script src="https://kit.fontawesome.com/69f24bba74.js" crossorigin="anonymous" defer></script>
 	<script src="/assets/js/bundle.js?v=<?php echo rand(); ?>"></script>
