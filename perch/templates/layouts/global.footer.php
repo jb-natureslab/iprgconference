@@ -15,7 +15,7 @@
 		    <div>
 
 		    </div>
-			<p class="copyright">&copy; 2021</p>
+			<p class="copyright">&copy; IPRG 2022</p>
 	    </div>
     </footer>
 
