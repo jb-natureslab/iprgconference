@@ -1830,9 +1830,11 @@ form {
 }
 
 .restrict .c-speaker__content {
+/*
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
 	gap: 1rem;
+*/
 }
 
 .c-speaker__content p {
