@@ -1484,6 +1484,8 @@ form {
 	grid-template-columns: 1fr 1fr;
 	grid-column-gap: 2rem;
 	grid-row-gap:2rem;
+	max-width:1024px;
+	margin:0 auto;
 }
 
 .align-inner {
