@@ -1479,6 +1479,13 @@ form {
 	width: 100%;
 }
 
+.align-container.keynote{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 2rem;
+	grid-row-gap:2rem;
+}
+
 .align-inner {
 	max-width: 950px;
 	display: flex;
