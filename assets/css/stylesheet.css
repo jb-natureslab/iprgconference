@@ -1482,10 +1482,16 @@ form {
 .align-container.keynote{
 	display:grid;
 	grid-template-columns: 1fr 1fr;
-	grid-column-gap: 2rem;
+	grid-column-gap: 0;
 	grid-row-gap:2rem;
 	max-width:1024px;
 	margin:0 auto;
+}
+
+@media screen and (max-width:680px){
+	.align-container.keynote{
+		grid-template-columns: 1fr;
+	}
 }
 
 .align-inner {
