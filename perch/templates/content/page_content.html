@@ -448,7 +448,7 @@
 			<div class="restrict">
 				<ul class="sponsors">
 					<perch:repeater id="sponsors" label="Sponsors">
-					<li><a href="<perch:content type="text" id="link" label="Link">" target="_blank"><img src="<perch:content type="image" label="Logo" width="400" height="400" />" alt="" /></a></li>
+					<li><perch:if exists="link"><a href="<perch:content type="text" id="link" label="Link">" target="_blank"></perch:if><img src="<perch:content type="image" id="logo" label="Logo" width="400" height="400" />" alt="" /><perch:if exists="link"></a></perch:if></li>
 					</perch:repeater>
 				</ul>
 			</div>
