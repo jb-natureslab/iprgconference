@@ -446,7 +446,7 @@
 	<perch:block type="sponsors" label="Sponsors">
 		<div class="wrap">
 			<div class="restrict">
-				<ul class="sponsors">
+				<ul class="sponsors <perch:content type="select" id="layout" options="three,five" />">
 					<perch:repeater id="sponsors" label="Sponsors">
 					<li><perch:if exists="link"><a href="<perch:content type="text" id="link" label="Link">" target="_blank"></perch:if><img src="<perch:content type="image" id="logo" label="Logo" width="400" height="400" />" alt="" /><perch:if exists="link"></a></perch:if></li>
 					</perch:repeater>

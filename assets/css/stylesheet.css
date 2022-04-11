@@ -2181,6 +2181,10 @@ ul.sponsors{
 	list-style:none;
 }
 
+ul.sponsors.five{
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 ul.sponsors li{
 	box-shadow: 0px 0px 10px #ccc;
 }
