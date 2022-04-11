@@ -51,10 +51,11 @@
 						<div id="card-errors" role="alert"></div>
 					</div>
 					<div class="form-input">
-						<button id="submit">Pay €20.00</button> <button onclick="javascript:complimentaryTicket();">Get a Free Ticket</button>
+						<button id="submit">Pay €20.00</button>
 					</div>
 				</div>
-			</form>';
+			</form>
+			<p>A small number of tickets are being made available without charge for those who cannot afford to pay. If you\'d like to be considered for one of these tickets please <a href="/contact">contact us</a>.</p>';
 			
 			$stripeValue = 2000;
 			echo '
