@@ -1068,6 +1068,7 @@ aside img {
 
 .dark .hamburgerButton p {
 	color: var(--header-dark-text);
+	font-family:'Ropa Sans';
 }
 
 .navigation {
@@ -1078,7 +1079,7 @@ aside img {
 	justify-content: flex-end;
 	align-items: center;
 	opacity: 0;
-	z-index: 10;
+	z-index: 100;
 }
 
 .navigation.show {
@@ -2168,4 +2169,22 @@ form {
 	width:100%;
 	height:550px;
 	object-fit:cover;
+}
+
+ul.sponsors{
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 2rem;
+	grid-row-gap: 2rem;
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+ul.sponsors li{
+	box-shadow: 0px 0px 10px #ccc;
+}
+
+ul.sponsors li img:hover{
+	box-shadow: 0px 0px 10px #777;
 }
