@@ -2196,3 +2196,9 @@ ul.sponsors li img{
 ul.sponsors li img:hover{
 	box-shadow: 0px 0px 10px #777;
 }
+
+@media screen and (max-width:480px){
+	ul.sponsors,ul.sponsors.five{
+		grid-template-columns: 1fr 1fr;
+	}
+}
