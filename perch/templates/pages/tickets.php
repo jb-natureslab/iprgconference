@@ -55,7 +55,7 @@
 					</div>
 				</div>
 			</form>
-			<p>A small number of tickets are being made available without charge for those who cannot afford to pay. If you\'d like to be considered for one of these tickets please <a href="/contact">contact us</a>.</p>';
+			<p>A small number of tickets are being made available without charge for those who are experiencing financial difficulty. If you\'d like to be considered for one of these tickets please <a href="/contact">contact us</a>.</p>';
 			
 			$stripeValue = 2000;
 			echo '
